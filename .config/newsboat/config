@@ -1,0 +1,77 @@
+#{{{ General Settings
+auto-reload yes
+reload-time 120
+reload-threads 4
+download-retries 4
+download-timeout 10
+prepopulate-query-feeds yes
+show-read-feeds no
+confirm-exit no
+cleanup-on-quit no
+#}}}
+
+#{{{ Favorite applications
+browser "$BROWSER"
+player "$PLAYER"
+#}}}
+
+#{{{ Key bindings
+bind-key j down
+bind-key k up
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key G end
+bind-key g home
+bind-key d pagedown
+bind-key u pageup
+bind-key l open
+bind-key h quit
+bind-key a toggle-article-read
+bind-key n next-unread
+bind-key N prev-unread
+bind-key D pb-download
+bind-key U show-urls
+bind-key x pb-delete
+unbind-key C feedlist
+#}}}
+
+#{{{ Formatting
+articlelist-title-format "%T (%u unread)"
+feedlist-title-format "🗏 NEWS"
+feedlist-format     "%t"
+articlelist-format  "%D | %T | %t"
+datetime-format "%d/%m"
+
+# <element>                 <fg>        <bg>         <attr>
+color background            default     default
+color info                  white       cyan         bold
+color listnormal_unread     white       default
+color listfocus_unread      white       cyan         bold
+color listfocus             black       cyan
+color listnormal            cyan        default
+color article               white       default
+
+# highlight feedlist    "^  *[0-9]+  *N  .*"    red    default
+highlight article "(^Feed:|^Title:|^Author:|^Link:|^Date:|^Podcast Download URL:)"    red default
+#}}}
+
+#{{{ Macros
+# Press « , + <key> » to launch macro
+
+# Copy link to clipboard
+# macro c set browser "copy(){ echo $1 | xclip ;}; copy "; open-in-browser ; set browser linkhandler
+
+# Open in browser
+macro o set browser "surf %u" ; open-in-browser ; set browser "firefox %u"
+
+# Play video centered
+macro p set browser "mpv %u" ; open-in-browser ; set browser "firefox %u"
+
+# Play video miniaturized
+macro m set browser "mpv --geometry=320x180-15-40 %u" ; open-in-browser ; set browser "firefox %u"
+
+# Open video in mpsyt
+macro y set browser "mpsyt url %u" ; open-in-browser ; set browser "firefox %u"
+#}}}
