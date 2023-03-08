@@ -1,0 +1,43 @@
+###############################################################################
+# Launcher dialogs
+###############################################################################
+
+#{{{ Launch terminal (<> Enter)
+set_from_resource $i3-wm.binding.terminal i3-wm.binding.terminal Return
+bindsym $mod+$i3-wm.binding.terminal exec --no-startup-id /usr/bin/x-terminal-emulator
+#}}}
+
+#{{{ Launch browser (<> b)
+set_from_resource $i3-wm.binding.browser i3-wm.binding.browser b
+bindsym $mod+$i3-wm.binding.browser exec --no-startup-id gtk-launch $(xdg-settings get default-web-browser)
+#}}}
+
+#{{{ Launch alternate browser (<> <Shift> b)
+set_from_resource $i3-wm.program.alternate_browser i3-wm.program.alternate_browser firefox
+set_from_resource $i3-wm.binding.alternate_browser i3-wm.binding.alternate_browser Shift+b
+bindsym $mod+$i3-wm.binding.alternate_browser exec --no-startup-id $i3-wm.program.alternate_browser
+#}}}
+
+#{{{ Launch tor browser (<> <Ctrl> b)
+set_from_resource $i3-wm.program.tor_browser i3-wm.program.tor_browser brave-browser --tor
+set_from_resource $i3-wm.binding.tor_browser i3-wm.binding.tor_browser Ctrl+b
+bindsym $mod+$i3-wm.binding.tor_browser exec --no-startup-id $i3-wm.program.tor_browser
+#}}}
+
+#{{{ Launch keyboard browser (<> <Alt> b)
+set_from_resource $i3-wm.program.keyboard_browser i3-wm.program.keyboard_browser qutebrowser
+set_from_resource $i3-wm.binding.keyboard_browser i3-wm.binding.keyboard_browser $alt+b
+bindsym $mod+$alt+$i3-wm.binding.keyboard_browser exec --no-startup-id $i3-wm.program.keyboard_browser
+#}}}
+
+#{{{ Launch terminal file browser (<> f)
+set_from_resource $i3-wm.program.terminal_file_browser i3-wm.program.terminal_file_browser gnome-terminal -e vifm
+set_from_resource $i3-wm.binding.terminal_file_browser i3-wm.binding.terminal_file_browser f
+bindsym $mod+$i3-wm.binding.terminal_file_browser exec --no-startup-id $i3-wm.program.terminal_file_browser
+#}}}
+
+#{{{ Launch GUI file browser (<> <Ctrl> f)
+set_from_resource $i3-wm.program.file_browser i3-wm.program.file_browser nautilus
+set_from_resource $i3-wm.binding.file_browser i3-wm.binding.file_browser Ctrl+f
+bindsym $mod+$i3-wm.binding.file_browser exec --no-startup-id $i3-wm.program.file_browser
+#}}}

@@ -1,0 +1,91 @@
+## Theme
+regolith.look.path: /usr/share/regolith-look/gruvbox
+
+## Font
+gtk.font_name: JetBrainsMono 13
+
+## Wallpaper
+regolith.wallpaper.file: /home/mike/wallpaper.jpg
+regolith.wallpaper.options: scaled
+
+## Lockscreen
+regolith.lockscreen.wallpaper.file: ~/wallpaper.jpg
+regolith.lockscreen.wallpaper.options: scaled
+
+## Terminal
+i3-wm.binding.terminal: Return
+
+##{{{ Web Browsers
+
+## Default browser
+i3-wm.binding.browser: b
+
+## Alternate web browser
+i3-wm.program.alternate_browser: firefox
+i3-wm.binding.alternate_browser: Shift+b
+
+## Tor browser
+i3-wm.program.tor_browser: brave-browser --tor
+i3-wm.binding.tor_browser: Ctrl+b
+
+## Keyboard driven web browser
+i3-wm.program.keyboard_browser: qutebrowser
+i3-wm.binding.keyboard_browser: b
+
+##}}}
+
+##{{{ File browsers
+
+## Terminal file browser
+i3-wm.program.terminal_file_browser: alacritty -e vifm
+i3-wm.binding.terminal_file_browser: f
+
+## GUI file browser
+i3-wm.program.gui_file_browser: nautilus
+i3-wm.binding.gui_file_browser: Shift+f
+
+##}}}
+
+## Bar
+i3-wm.bar.font : JetBrainsMono
+i3-wm.bar.separatorchar: |
+i3-wm.bar.position: bottom
+i3xrocks.weather.location: Argentona
+i3-wm.bar.background.color: "#282828"
+i3-wm.bar.separator.color: "#FFFFFF"
+i3-wm.bar.foreground.color: "#ebdbb2"
+i3-wm.bar.stripworkspacenumbers: true
+
+## Rofi
+rofiTheme: gruvbox-dark
+i3-wm.binding.launcher.app: comma
+i3-wm.binding.launcher.cmd: Shift+comma
+i3-wm.binding.launcher.window: Ctrl+comma
+i3-wm.binding.file_search: comma
+
+## Default gaps size
+i3-wm.gaps.outer.size: 0
+i3-wm.gaps.inner.size: 50
+
+## Resize gaps
+i3-wm.binding.inc_gaps: $mod+Ctrl+w
+i3-wm.binding.dec_gaps: $mod+Ctrl+less
+
+## Borders
+i3-wm.window.border.size: 5
+i3-wm.window.border.focused.color: "#3CF3CF"
+i3-wm.client.focused.color.border: "#3CF3CF"
+
+## Workspaces
+i3-wm.workspace.01.name: 1: home
+i3-wm.workspace.02.name: 2: dev1
+i3-wm.workspace.03.name: 3: dev2
+i3-wm.workspace.04.name: 4: dev3
+i3-wm.workspace.05.name: 5: chat
+i3-wm.workspace.06.name: 6: design
+i3-wm.workspace.07.name: 7: office
+i3-wm.workspace.08.name: 8: files
+i3-wm.workspace.09.name: 9: virtual
+i3-wm.workspace.10.name: 10: games
+i3-wm.workspace.11.name: 11: media
+i3-wm.workspace.12.name: 12: misc

@@ -1,0 +1,18 @@
+###############################################################################
+# System Management
+###############################################################################
+
+#{{{ Launch sound settings (<> a)
+set_from_resource $i3-wm.binding.settings.sound i3-wm.binding.settings.sound a
+set_from_resource $i3-wm.program.settings.sound i3-wm.program.settings.sound regolith-control-center --class=floating_window sound
+bindsym $mod+$i3-wm.binding.settings.sound exec --no-startup-id $i3-wm.program.settings.sound
+#}}}
+
+#{{{ Launch main settings (<> ;)
+set_from_resource $i3-wm.binding.settings i3-wm.binding.settings semicolon
+set_from_resource $i3-wm.program.settings i3-wm.program.settings regolith-control-center --class=floating_window
+bindsym $mod+Shift+$i3-wm.binding.settings exec --no-startup-id $i3-wm.program.settings
+#}}}
+
+# set_from_resource $i3-wm.program.media-keys i3-wm.program.media-keys /usr/libexec/gnome-flashback-media-keys
+# exec --no-startup-id $i3-wm.program.media-keys
