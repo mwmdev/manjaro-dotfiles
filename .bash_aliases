@@ -62,6 +62,9 @@ alias v='nvim'
 # Webcam
 alias mcam='mpv /dev/video0'
 
+# Python
+alias py='python3'
+
 # Todo list
 alias mtod='rg @@TODO ~/Localserver'
 
