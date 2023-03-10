@@ -87,9 +87,14 @@ alias gdn='git diff --name-only'
 alias gpm='git push origin master'
 alias gpb='git push origin bugfix'
 alias gpd='git push origin dev'
-alias gpl='git push live master'
-alias gf='git fetch'
+alias gf='git fetch --all'
 alias gpu='git pull'
+
+# Git (dotfiles)
+alias gad='git dotfiles add'
+alias gcd='git dotfiles commit -m'
+alias gsd='git dotfiles status -uno'
+alias gpd='git dotfiles push'
 
 # Wordpress
 alias wupd='curl https://gitlab.com/snippets/1880897/raw > update.sh'
