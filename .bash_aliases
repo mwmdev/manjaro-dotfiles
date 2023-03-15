@@ -76,6 +76,9 @@ alias vpn='protonvpn-cli c'
 alias vpnc='protonvpn-cli c "CH-ES#1"'
 alias vpnd='protonvpn-cli d'
 alias vpns='protonvpn-cli s'
+alias vpnf='protonvpn-cli c --fastest --protocol udp'
+alias vpnr='protonvpn-cli c --random --protocol udp'
+
 
 # Git
 alias ga='git add -A'
