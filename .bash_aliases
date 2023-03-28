@@ -59,6 +59,11 @@ alias f='vifm'
 # Text editor
 alias v='nvim'
 
+# LM chat
+alias n='python3 ~/scripts/neuma/neuma.py'
+
+
+
 # Webcam
 alias mcam='mpv /dev/video0'
 
