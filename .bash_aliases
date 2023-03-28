@@ -99,10 +99,10 @@ alias gf='git fetch --all'
 alias gpu='git pull'
 
 # Git (dotfiles)
-alias gad='git dotfiles add'
-alias gcd='git dotfiles commit -m'
-alias gsd='git dotfiles status -uno'
-alias gpd='git dotfiles push'
+alias gda='git dotfiles add'
+alias gdc='git dotfiles commit -m'
+alias gds='git dotfiles status -uno'
+alias gdp='git dotfiles push'
 
 # Wordpress
 alias wupd='curl https://gitlab.com/snippets/1880897/raw > update.sh'
