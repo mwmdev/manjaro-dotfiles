@@ -43,6 +43,10 @@ call vundle#begin()
 " https://github.com/VundleVim/Vundle.vim
 Plugin 'VundleVim/Vundle.vim'
 
+" Python indentation
+" https://github.com/vim-python-pep8-indent
+Plugin 'Vimjas/vim-python-pep8-indent'
+
 " Color scheme
 " https://github.com/morhetz/gruvbox/
 Plugin 'morhetz/gruvbox'
@@ -102,7 +106,7 @@ Plugin 'kshenoy/vim-signature'
 
 " CSS Color preview
 " https://github.com/ap/vim-css-color.git
-Plugin 'ap/vim-css-color'
+" Plugin 'ap/vim-css-color'
 
 " Distraction free editing
 " https://github.com/junegunn/goyo.vim
