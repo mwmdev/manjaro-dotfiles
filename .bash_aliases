@@ -84,7 +84,6 @@ alias vpns='protonvpn-cli s'
 alias vpnf='protonvpn-cli c --fastest --protocol udp'
 alias vpnr='protonvpn-cli c --random --protocol udp'
 
-
 # Git
 alias ga='git add -A'
 alias gc='git commit -m'
@@ -101,14 +100,12 @@ alias gpu='git pull'
 # Git (dotfiles)
 alias gda='git dotfiles add'
 alias gdc='git dotfiles commit -m'
+alias gdd='git dotfiles diff'
 alias gds='git dotfiles status -uno'
 alias gdp='git dotfiles push'
 
 # Wordpress
-alias wupd='curl https://gitlab.com/snippets/1880897/raw > update.sh'
-alias wstu='curl https://gitlab.com/snippets/2076050/raw > .startup'
 alias wpgi='wget -O .gitignore "https://gitlab.com/snippets/1699715/raw"'
-alias wptm='wget -O .tmuxinator "https://gitlab.com/snippets/2495361/raw"'
 alias wpev='wp eval-file eval.php'
 
 # Browserstack local testing
@@ -134,7 +131,7 @@ alias mgip='curl ipinfo.io/'
 alias mbkp='cd /media/mike/Mnemosyne && sudo dd if=/dev/nvme0n1 of=./temple.image status=progress'
 
 # Weather
-alias mwea='curl wttr.in/argentona'
+alias mwea='curl wttr.in/$WEATHER_TOWN'
 
 # Matrix
 alias mtrx='cmatrix'
