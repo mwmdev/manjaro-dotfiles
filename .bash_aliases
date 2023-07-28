@@ -47,6 +47,7 @@ alias usb='cd /var/run/user/1000/gvfs'
 alias l='cd ~/Localserver'
 alias c='cd ~/Documents/work/clients'
 alias d='cd ~/Downloads'
+# When in Localserver/project, jump to project plugins or theme folder
 alias t='cd $(find . -type d -name "public" | head -n 1) && cd wp-content/themes'
 alias p='cd $(find . -type d -name "public" | head -n 1) && cd wp-content/plugins'
 #}}}
@@ -57,21 +58,20 @@ alias p='cd $(find . -type d -name "public" | head -n 1) && cd wp-content/plugin
 alias f='vifm'
 
 # Text editor
-alias v='nvim'
+alias v='lvim'
+
+# Python
+alias python='python3'
 
 # LM chat
-alias n='python3 ~/scripts/neuma/neuma.py'
-
-
+alias n='cd ~/scripts/neuma && source env/bin/activate && python3 neuma.py'
 
 # Webcam
 alias mcam='mpv /dev/video0'
 
 # Python
 alias py='python3'
-
-# Todo list
-alias mtod='rg @@TODO ~/Localserver'
+alias python='python3'
 
 # gitLab cli
 alias gl='glab'
@@ -127,9 +127,6 @@ alias mtrs='pirate-get -t'
 alias mpig='ping -c 5 www.google.com'
 alias mgip='curl ipinfo.io/'
 
-# Backup
-alias mbkp='cd /media/mike/Mnemosyne && sudo dd if=/dev/nvme0n1 of=./temple.image status=progress'
-
 # Weather
 alias mwea='curl wttr.in/$WEATHER_TOWN'
 
@@ -148,6 +145,7 @@ alias mhst='sudo $EDITOR /etc/hosts'
 alias mxrs='$EDITOR ~/.Xresources'
 alias msrc='sudo $EDITOR /etc/apt/sources.list'
 alias mvrc='$EDITOR ~/.vimrc'
+alias mlvc='$EDITOR ~/config/lvim/config.lua'
 alias mi3x='$EDITOR ~/.config/regolith2/Xresources'
 alias mi3p='$EDITOR ~/.config/regolith2/picom/config'
 alias mplb='$EDITOR ~/.config/polybar/config'
