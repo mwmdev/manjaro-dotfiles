@@ -15,7 +15,7 @@ exec --no-startup-id prepros
 exec_always --no-startup-id picom -b
 
 # Assign applications to workspaces
-assign [class="Gimp"] "6:Design"
+assign [class="Gimp"] $ws6
 
 # Dropdown windows
 
@@ -378,8 +378,8 @@ bindsym $mod+x exec --no-startup-id gnome-calculator
 #}}}
 
 #{{{ C
-# Mod+C: nvim
-bindsym $mod+c exec --no-startup-id $term -e nvim
+# Mod+C: lvim
+bindsym $mod+c exec --no-startup-id $term -e lvim
 # Mod+Shift+C: Set horizontal split
 # Mod+Ctrl+C:
 # Mod+Alt+C:
@@ -387,6 +387,7 @@ bindsym $mod+c exec --no-startup-id $term -e nvim
 
 #{{{ V
 # Mod+V:
+bindsym $mod+v exec --no-startup-id code
 # Mod+Shift+V: Set vertical split
 # Mod+Ctrl+V:
 # Mod+Alt+V:
@@ -425,7 +426,7 @@ bindsym $mod+n exec --no-startup-id $term --class newsboat -e newsboat
 #{{{ :
 # Mod+:: genie
 for_window [instance="floating_chatgpt"] floating enable, resize set 800 800, move position center
-bindsym $mod+colon exec alacritty --class floating_chatgpt -e python3 ~/scripts/genie/genie.py
+bindsym $mod+colon exec sh -c 'alacritty --class floating_chatgpt -e python3 ~/scripts/neuma/neuma.py'
 # Mod+Shift+:: GUI Chat GPT
 for_window [instance="chat-gpt"] floating enable, resize set 1200 800, move position center
 bindsym $mod+Shift+colon exec ~/Apps/chat-gpt_0.10.3_amd64.AppImage
