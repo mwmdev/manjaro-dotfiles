@@ -9,21 +9,6 @@ lvim.colorscheme = "gruvbox"
 -- Word wrap
 vim.opt.wrap = true
 
--- Folding
-vim.opt.foldenable = true
-vim.opt.foldlevel = 0
-vim.opt.foldnestmax = 10
-vim.opt.foldmethod = "marker"
-vim.opt.foldtext = 'v:lua.custom_fold_text()'
-vim.opt.modelines = 1
-
-function _G.custom_fold_text()
-    local line = vim.fn.getline(vim.v.foldstart)
-    line = string.gsub(line, '#{{{', '')
-    line = string.gsub(line, '//{{{', '')
-    return " " .. line
-end
-
 -- Plugins
 lvim.plugins = {
 
@@ -32,7 +17,6 @@ lvim.plugins = {
 		"github/copilot.vim",
 		event = "VeryLazy",
 		config = function()
-			-- copilot assume mapped
 			vim.g.copilot_assume_mapped = true
 			vim.g.copilot_no_tab_map = true
 		end,
@@ -58,27 +42,6 @@ lvim.plugins = {
     end,
   },
 
-  -- Vim Fugitive
-  {
-    "tpope/vim-fugitive",
-    cmd = {
-      "G",
-      "Git",
-      "Gdiffsplit",
-      "Gread",
-      "Gwrite",
-      "Ggrep",
-      "GMove",
-      "GDelete",
-      "GBrowse",
-      "GRemove",
-      "GRename",
-      "Glgrep",
-      "Gedit"
-    },
-    ft = {"fugitive"}
-  },
-
   -- Colorizer
   {
     "norcalli/nvim-colorizer.lua",
@@ -101,37 +64,59 @@ lvim.plugins = {
     cmd = "TroubleToggle",
   },
 
-  -- Codi
-  {
-  "metakirby5/codi.vim",
-    cmd = "Codi",
-  },
-
   -- TODO Comments
   {
   "folke/todo-comments.nvim",
   event = "BufRead",
   config = function()
-    require("todo-comments").setup()
+    require("todo-comments").setup {
+        keywords = {
+          FIX = {
+            icon = " ",
+            color = "error",
+            alt = { "FIXME", "BUG", "FIXIT", "FIX", "ISSUE" },
+          },
+          TODO = { icon = "󱖫 ", color = "info" },
+          HACK = { icon = " ", color = "warning" },
+          WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+          PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+          NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+          DOING = { icon = "󱁤 ", color = "process" },
+          DONE = { icon = " ", color = "success", alt = { "OK" } },
+          QUESTION = { icon = " ", color = "question", alt = { "QSTN" } },
+          RESUME = { icon = " ", color = "process", alt = { "RES" } },
+        },
+        colors = {
+          error = { "DiagnosticError", "ErrorMsg", "#C53931" },
+          warning = { "DiagnosticWarn", "WarningMsg", "#CF662D" },
+          process = { "Process", "#AE6A82" },
+          success = { "Success", "#999831" },
+          question = { "Question", "#CF9A38" },
+          info = { "DiagnosticInfo", "#2563EB" },
+          hint = { "DiagnosticHint", "#709D6B" },
+          default = { "Identifier", "#7C3AED" },
+          test = { "Identifier", "#FF00FF" }
+        },
+      }
   end,
   },
 
 }
 
--- FIX : Todo Comments
-lvim.builtin.todo_comments = {
-  keywords = {
-    FIX = {
-      icon = " ", -- icon used for the sign, and in search results
-      color = "error", -- can be a hex color, or a named color (see below)
-      alt = { "FIXME", "BUG", "FIXIT", "FIX", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
-      -- signs = false, -- configure signs for some keywords individually
-    },
-    TODO = { icon = " ", color = "info" },
-    HACK = { icon = " ", color = "warning" },
-    WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-    PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-    NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
-    DONE = { icon = " ", color = "hint", alt = { "OK" } },
-  },
-}
+
+-- Folding
+vim.opt.foldenable = true
+vim.opt.foldlevel = 0
+vim.opt.foldnestmax = 10
+vim.opt.foldmethod = "marker"
+vim.opt.foldtext = 'v:lua.custom_fold_text()'
+vim.opt.modelines = 1
+
+function _G.custom_fold_text()
+    local line = vim.fn.getline(vim.v.foldstart)
+    line = string.gsub(line, '#{{{', '')
+    line = string.gsub(line, '//{{{', '')
+    line = string.gsub(line, '/*{{{', '')
+    line = string.gsub(line, '--{{{', '')
+    return " " .. line
+end
