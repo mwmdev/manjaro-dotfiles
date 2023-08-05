@@ -3,16 +3,36 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 --
+--{{{ Look and feel
 -- Theme
 lvim.colorscheme = "gruvbox"
-
 -- Word wrap
 vim.opt.wrap = true
+--}}}
 
--- Plugins
+--{{{ Key mappings
+lvim.keys.normal_mode["<C-t>"] = ":1ToggleTerm<cr>"
+
+-- Treesitter
+lvim.builtin.which_key.mappings["t"] = {
+  name = "Tools",
+  g = {
+    name = "ChatGPT",
+    a = { "<cmd>ChatGPTActAs<cr>", "ChatGPT act as" },
+    c = { "<cmd>ChatGPT<cr>", "ChatGPT" },
+    e = { "<cmd>ChatGPTEditWithInstructions<cr>", "ChatGPT edit with instructions" },
+  },
+  l = {
+    name = "Logs",
+    p = { '<cmd>1TermExec cmd="lnav ./logs/php/error.log" size=50 direction=horizontal<cr>', "PHP error log" },
+  }
+}
+--}}}
+
+--{{{ Plugins
 lvim.plugins = {
 
-	-- Github Copilot
+	--{{{ Github Copilot
 	{
 		"github/copilot.vim",
 		event = "VeryLazy",
@@ -28,21 +48,39 @@ lvim.plugins = {
 			table.insert(lvim.builtin.cmp.sources, 2, { name = "copilot" })
 		end,
 	},
+  --}}}
 
-	-- Gruvbox theme
+  --{{{ Chat GPT
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup()
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+  },
+  --}}}
+
+	--{{{ Gruvbox theme
 	{
 		"ellisonleao/gruvbox.nvim"
 	},
+  --}}}
 
-  -- Marks
+  --{{{ Marks
   {
     "chentoast/marks.nvim",
     config = function()
       require("marks").setup()
     end,
   },
+  --}}}
 
-  -- Colorizer
+  --{{{ Colorizer
   {
     "norcalli/nvim-colorizer.lua",
     config = function()
@@ -57,14 +95,16 @@ lvim.plugins = {
       })
     end,
   },
+  --}}}
 
-  -- Trouble
+  --{{{ Trouble
   {
   "folke/trouble.nvim",
     cmd = "TroubleToggle",
   },
+  --}}}
 
-  -- TODO Comments
+  --{{{ TODO Comments
   {
   "folke/todo-comments.nvim",
   event = "BufRead",
@@ -100,11 +140,12 @@ lvim.plugins = {
       }
   end,
   },
+  -- }}}
 
 }
+--}}}
 
-
--- Folding
+--{{{ Folding
 vim.opt.foldenable = true
 vim.opt.foldlevel = 0
 vim.opt.foldnestmax = 10
@@ -120,3 +161,4 @@ function _G.custom_fold_text()
     line = string.gsub(line, '--{{{', '')
     return " " .. line
 end
+--}}}
