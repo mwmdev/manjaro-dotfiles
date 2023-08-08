@@ -21,15 +21,16 @@ alias llt='ls -lhAt'
 alias mpat='echo -e ${PATH//:/\\n}'
 
 # Package management
-alias mins='sudo apt-get install'
-alias mupd='sudo apt-get update'
-alias mrmv='sudo apt-get remove'
+alias mins='sudo pacman -S'
+alias mupd='sudo pacman -Syy'
+alias mupg='sudo pacman -Syu'
+alias mrmv='sudo pacman -Rns'
 
 # Mount remote drives
 alias mmnt='sudo mount -a'
 
 # Reload config files
-alias br='. ~/.bashrc && regolith-look refresh'
+alias br='. ~/.bashrc'
 alias xr='xrdb ~/.Xresources'
 alias xm='xmodmap ~/.Xmodmap'
 
@@ -112,7 +113,7 @@ alias wpev='wp eval-file eval.php'
 alias mbst='sudo ~/Apps/BrowserStackLocal --key vFgsz1AenexVBvdHBzpM'
 
 # Tmuxinator
-alias mux='tmuxinator'
+# alias mux='tmuxinator'
 
 # Youtube search
 alias myts='ytfzf -T mpv -t'
@@ -146,8 +147,7 @@ alias mxrs='$EDITOR ~/.Xresources'
 alias msrc='sudo $EDITOR /etc/apt/sources.list'
 alias mvrc='$EDITOR ~/.vimrc'
 alias mlvc='$EDITOR ~/.config/lvim/config.lua'
-alias mi3x='$EDITOR ~/.config/regolith2/Xresources'
-alias mi3p='$EDITOR ~/.config/regolith2/picom/config'
+alias mi3c='$EDITOR ~/.i3/config'
 alias mplb='$EDITOR ~/.config/polybar/config'
 alias mgtk='$EDITOR ~/.config/gtk-3.0/settings.ini'
 alias mvfr='$EDITOR ~/.config/vifm/vifmrc'
