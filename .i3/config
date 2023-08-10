@@ -80,6 +80,9 @@ for_window [instance="dd_calc"] floating enable, resize set 200 100, move scratc
 # Spotify
 for_window [instance="dd_spot"] floating enable, resize set 800 600, move scratchpad
 
+# Ai Assistant
+for_window [instance="dd_ai"] floating enable, resize set 800 700, move scratchpad
+
 #}}}
 
 #{{{ Applications / workspace assignments
@@ -137,8 +140,6 @@ for_window [title="Find in current message"] floating enable resize shrink heigh
 ## Workspace back and forth
 bindsym $mod+Escape workspace back_and_forth
 
-# TODO
-# bindsym $mod+Shift+Escape
 
 # Switch to workspace 1
 bindsym $mod+F1 workspace $ws1
@@ -292,10 +293,10 @@ bindsym $mod+y exec $alterm -name mpsyt -e mpsyt
 bindsym $mod+Shift+y exec $alterm -name youtube-dl -e youtube-dl --add-metadata -ic -o "~/Downloads/video/%(title)s.%(ext)s" "$(xclip -selection p -o)"
 
 ## Freetube
-bindsym $mod+Ctrl+y exec freetube-bin
+# bindsym $mod+Ctrl+y exec freetube-bin
 
-## FTB browser
-# bindsym $mod+u exec filezilla
+## Sync tool 
+bindsym $mod+u exec grsync
 
 ## Mount Downloads partition
 # bindsym $mod+Shift+u exec udisksctl mount -b /dev/sda5
@@ -325,11 +326,11 @@ bindsym $mod+asciicircum exec krita
 ## Color picker
 bindsym $mod+Shift+dead_circumflex exec gcolor3
 
-## TODO
-#bindsym $mod+dollar exec
+## Move to scratchpad
+bindsym $mod+dollar move scratchpad
 
-## TODO
-#bindsym $mod+Shift+dollar exec
+## Show scratchpad
+bindsym $mod+Shift+dollar scratchpad show
 
 ## Terminal
 bindsym $mod+Return exec $term
@@ -395,9 +396,12 @@ bindsym $mod+s [instance="dd_spot"] scratchpad show,move position center
 ## Download YouTube audio
 bindsym $mod+Shift+s exec $alterm -name youtube-dl -e youtube-dl --add-metadata --audio-format mp3 -xic -o "~/Downloads/audio/%(title)s.%(ext)s" "$(xclip -selection p -o)"
 
+## Open Lofi Cafe
+bindsym $mod+Ctrl+s exec surf https://lofi.cafe
+
 ## Projects
 bindsym $mod+d exec bash ~/Localserver/p.sh
-bindsym $mod+Shift+d exec bash ~/scripts/i3-resurrect-dmenu.sh
+bindsym $mod+Shift+d exec bash ~/Applications/repos/mwm-tools/i3-resurrect-dmenu.sh
 
 ## File browser
 bindsym $mod+f exec $term -e vifm
@@ -408,8 +412,8 @@ bindsym $mod+Shift+f fullscreen toggle
 ## GUI filebrowser
 bindsym $mod+Ctrl+f exec pcmanfm
 
-# Logs
-# bindsym $mod+g [instance="dd_log"] scratchpad show,move position center
+# AI Assistant
+bindsym $mod+g [instance="dd_ai"] scratchpad show,move position center
 # bindsym $mod+Shift+g exec lutris
 
 ## i3 Focus left
@@ -443,10 +447,10 @@ bindsym $mod+Shift+l move container right
 bindsym $mod+Shift+m exec $term -e btop
 
 ## Translator
-bindsym $mod+ugrave exec $alterm -name trans -e ~/scripts/trans
+bindsym $mod+ugrave exec $alterm -name trans -e ~/Applications/repos/mwm-tools/trans
 
 ## Dictionary
-bindsym $mod+Shift+ugrave exec $alterm -name dict -e ~/scripts/dict
+bindsym $mod+Shift+ugrave exec $alterm -name dict -e ~/Applications/repos/mwm-tools/dict
 
 ## Security cam 1 live view (loaded locally by concatenating config.local)
 # bindsym $mod+asterisk
@@ -693,14 +697,15 @@ exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id devmon
 exec_always --no-startup-id unclutter
 exec --no-startup-id transmission-daemon
-exec --no-startup-id $alterm -name dd_help -e vim ~/help -c "set nonumber" -c "Goyo"
-exec --no-startup-id $alterm -name dd_filebrowser -e vifm
-exec --no-startup-id $alterm -name dd_term
-exec --no-startup-id $alterm -name dd_calc -e bc -q
+exec --no-startup-id $term --class dd_help -e vim ~/help -c "set nonumber" -c "Goyo"
+exec --no-startup-id $term --class dd_filebrowser -e vifm
+exec --no-startup-id tabbed $term --class dd_term --embed
+exec --no-startup-id $term --class dd_calc -e bc -q
 exec_always --no-startup-id picom -b
 exec --no-startup-id /opt/prepros/prepros
 exec --no-startup-id local-by-flywheel
-exec_always --no-startup-id $alterm -name dd_spot -e ncspot 
+exec --no-startup-id $term --class dd_spot -e ncspot 
+exec --no-startup-id $term --class dd_ai -e ~/scripts/neuma/start.sh
 #}}}
 
 #{{{ Colors

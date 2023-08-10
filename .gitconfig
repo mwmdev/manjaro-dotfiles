@@ -1,2 +1,12 @@
 [alias]
 	dotfiles = !git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME
+[user]
+	email = 31964517+mwmdev@users.noreply.github.com
+	name = Mike Wassmer
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
