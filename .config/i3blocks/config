@@ -1,0 +1,113 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Blocks are available here:
+# https://github.com/Anachron/i3blocks/blob/master/blocks
+# https://github.com/vivien/i3blocks-contrib
+
+# Global properties
+#
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+# Change $SCRIPT_DIR to the location of your scripts!
+SCRIPT_DIR=/home/mike/.config/i3blocks/scripts
+command=$SCRIPT_DIR/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+# Temperature
+# https://github.com/vivien/i3blocks-contrib/tree/master/temperature
+[temperature]
+label= 
+interval=5
+
+# CPU usage
+# https://github.com/vivien/i3blocks-contrib/tree/master/cpu_usage
+[cpu_usage]
+label=  
+interval=10
+min_width= 100.00%
+COLOR_NORMAL=#958675
+COLOR_WARN=#CF9A38
+COLOR_CRIT=#C53931
+
+# Memory usage
+# https://github.com/vivien/i3blocks-contrib/tree/master/memory
+[memory]
+label=  
+color=#958675
+interval=30
+percent=true
+
+# Load average
+# https://github.com/vivien/i3blocks-contrib/tree/master/load_average
+[load_average]
+label=󰝲 
+color=#958675
+interval=10
+
+# Disk usage
+# https://github.com/vivien/i3blocks-contrib/blob/master/disk_usage/
+[disk_root]
+command=$SCRIPT_DIR/disk_usage format="{perc_used:.0f}%" warn_color=#CF9A38 crit_color=#C53931
+label=󰋊 
+color=#958675
+# DIR=/
+interval=30
+
+# VPN
+# https://github.com/vivien/i3blocks-contrib/tree/master/nm-vpn
+[nm-vpn]
+label=󰝴  
+init_color=#FFFF00
+on_color=#999831
+interval=5
+
+# Volume
+# https://github.com/vivien/i3blocks-contrib/tree/master/volume
+[volume]
+label=♪ 
+interval=once
+signal=10
+STEP=5%
+
+# Timer and stopwatch
+# https://github.com/vivien/i3blocks-contrib/tree/master/timer_and_stopwatch
+[timer_and_stopwatch]
+color=#958675
+format=json
+interval=1
+TIMER_LABEL=󱦟
+STOPWATCH_LABEL=󰔛
+DEFAULT_MODE=stopwatch
+#DEFAULT_STOPWATCH=0
+#DEFAULT_TIMER=60
+PLAY_LABEL=
+PAUSE_LABEL=󰏤
+#TIMER_LOOP=true
+NEUTRAL_COLOR=#282828
+
+# Date Time
+[time]
+label=  
+command=date '+%d/%m/%Y - %H:%M:%S'
+interval=1
