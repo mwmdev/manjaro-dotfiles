@@ -66,22 +66,22 @@ set $ws12 "12: "
 #{{{ Dropdown Windows
 
 # Help
-for_window [instance="dd_help"] floating enable, resize set 600 600, move scratchpad
+for_window [instance="dd_help"] floating enable, resize set 600 800, move scratchpad
 
 # Terminal
-for_window [instance="dd_term"] floating enable, resize set 600 400, move scratchpad
+for_window [instance="dd_term"] floating enable, resize set 800 600, move scratchpad
 
 # File browser
-for_window [instance="dd_filebrowser"] floating enable, resize set 1000 400, move scratchpad
+for_window [instance="dd_filebrowser"] floating enable, resize set 800 600, move scratchpad
 
 # Calculator
-for_window [instance="dd_calc"] floating enable, resize set 200 100, move scratchpad
+for_window [instance="dd_calc"] floating enable, resize set 300 200, move scratchpad
 
 # Spotify
 for_window [instance="dd_spot"] floating enable, resize set 800 600, move scratchpad
 
 # Ai Assistant
-for_window [instance="dd_ai"] floating enable, resize set 800 700, move scratchpad
+for_window [instance="dd_ai"] floating enable, resize set 800 600, move scratchpad
 
 #}}}
 
@@ -108,8 +108,8 @@ for_window [class="URxvt" title="vifm"] floating enable
 
 # GUI applications
 for_window [class="Surf"] floating enable resize grow width 400px, move position center
-for_window [class="Local"] floating enable resize set 400 300, move scratchpad
-for_window [class="Prepros"] floating enable resize set 400 300, move scratchpad
+for_window [class="Local"] floating enable resize set 600 400, move scratchpad
+for_window [class="Prepros"] floating enable resize set 600 400, move scratchpad
 for_window [class="Gcolor3"] floating enable resize set 400 300, move position center
 for_window [class="GParted"] floating enable, move position center
 for_window [class="SimpleScreenRecorder"] floating enable, move position center
@@ -465,7 +465,7 @@ bindsym $mod+Ctrl+asterisk exec mpv /dev/video1
 bindsym $mod+Ctrl+Shift+asterisk exec mpv /dev/video0
 
 ## Volume down
-bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
 
 ## TODO
 #bindsym $mod+XF86AudioLowerVolume exec
@@ -474,7 +474,7 @@ bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 #bindsym $mod+Shift+XF86AudioLowerVolume exec
 
 ## Volume up
-bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks
 
 ## TODO
 #bindsym $mod+XF86AudioRaiseVolume exec
@@ -483,7 +483,7 @@ bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 #bindsym $mod+Shift+XF86AudioRaiseVolume exec
 
 ## Mute
-bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
 
 ## TODO
 #bindsym $mod+XF86AudioMute exec
@@ -587,17 +587,10 @@ bindsym $mod+colon exec --no-startup-id dmenu_recency
 ## TODO
 #bindsym $mod+Shift+colon
 
-## TODO
-# bindsym $mod+exclam exec --no-startup-id hardinfo
-
-## TODO
-#bindsym $mod+Shift+exclam
-
-## TODO
-#bindsym $mod+Menu exec
-
-## TODO
-#bindsym $mod+Shift+Menu exec
+## Layouts
+bindsym $mod+exclam layout default
+bindsym $mod+Shift+exclam layout tabbed
+bindsym $mod+Ctrl+Shift+exclam layout stacking
 
 ## TODO
 #bindsym $mod+[Brightless] exec
@@ -699,13 +692,13 @@ exec_always --no-startup-id unclutter
 exec --no-startup-id transmission-daemon
 exec --no-startup-id $term --class dd_help -e vim ~/help -c "set nonumber" -c "Goyo"
 exec --no-startup-id $term --class dd_filebrowser -e vifm
-exec --no-startup-id tabbed $term --class dd_term --embed
+exec --no-startup-id $term --class dd_term
 exec --no-startup-id $term --class dd_calc -e bc -q
 exec_always --no-startup-id picom -b
 exec --no-startup-id /opt/prepros/prepros
 exec --no-startup-id local-by-flywheel
 exec --no-startup-id $term --class dd_spot -e ncspot 
-exec --no-startup-id $term --class dd_ai -e ~/scripts/neuma/start.sh
+exec --no-startup-id $term --class dd_ai -e ~/Applications/repos/neuma/start.sh
 #}}}
 
 #{{{ Colors
@@ -764,9 +757,7 @@ client.urgent           $red        $red        $white      $red        $red
 
 #{{{ Status bar
 bar {
-  #status_command bumblebee-status -m pomodoro cpu memory disk docker_ps sensors pasource pasink datetime battery -t gruvbox-powerline
-  i3bar_command i3bar
-	status_command i3status
+  status_command i3blocks
 	position bottom
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
