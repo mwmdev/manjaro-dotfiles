@@ -1,0 +1,1612 @@
+#{{{ Android
+
+# Reboot in fastboot
+Hold volume down and power
+
+# ADB list devices
+adb devices
+
+# ADB reboot to bootloader
+adb reboot bootloader
+
+# ADB sideload
+adb sideload <file>
+
+# Fastboot list devices
+fastboot devices
+
+# Fastboot burn iso
+fastboot flashall -w <file>
+
+# Fastboot burn image
+fastboot flash <partition> <file>
+
+# Fastboot reboot to bootloader
+fastboot reboot-bootloader
+
+# Fastboot reboot to recovery
+fastboot reboot-recovery
+
+# Fastboot reboot to system
+fastboot reboot
+
+# Remove uninstallable packages
+https://github.com/0x192/universal-android-debloater
+
+#}}}
+
+#{{{ Bash
+
+# Find large files to free up space
+find / -type f -size +200M -exec du -h {} + 2>/dev/null | sort -r -h
+
+# Mount all nfs fstab mounts
+sudo mount -a -t nfs
+
+# Symbolic link
+ln -s /path/to/file /path/to/link
+
+# Find in files recursively
+grep -rnwl . -e 'word'
+
+# Display duplicate lines in a file (with count)
+sort input.txt | uniq -cd
+
+# Remove duplicate lines in a file
+sort -u input.txt
+
+# Record terminal
+ttyrec
+
+# Stop recording termina
+Ctrl + D
+
+# Convert terminal recording to gif
+ttygif ttyrecord
+
+# Install deb package on arch
+yay -S debtap
+sudo debtap -u #Synchronize pkgfile database
+debtap package.deb
+
+# Check free disk space
+df -h
+
+# Check folder size
+du -hcs folder/
+
+# Find folder by name recursively on local drives
+find / -type d -name "folder"
+
+# Average process size (RSS column)
+ps -ylC php-fpm --sort:rss
+
+# Search history
+Ctrl+R
+
+# YTDLP (Youtube from command line)
+https://www.makeuseof.com/download-youtube-videos-yt-dlp-linux-terminal/
+
+# Export installed official packages to file
+pacman -Qqe > pkglist.txt
+
+# Export installed AUR packets to file
+pacman -Qqm > aurpkglist.txt
+
+# Install packages from file
+sudo pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
+
+# Clear package cache, leaving only the last
+# versions of installed packages
+sudo paccache -rk 1
+
+# Clear package cache, removing all uninstalled packages
+sudo paccache -ruk0
+
+# Clear journal log, leaving only the last 100M
+sudo ournalctl --flush --rotate
+sudo journalctl --vacuum-size=100M
+
+# Recursively set all files and folders to lowercase
+for f in `find`; do mv -v "$f" "`echo $f | tr '[A-Z]' '[a-z]'`"; done
+
+# Convert all .wav in folder to .mp3
+for i in *.wav; do test -f "${i%.wav}.mp3" || lame -b 320 -h "${i}" "${i%.wav}.mp3"; done
+
+# Colored tail
+tail -F debug.log | ccze -A
+
+# Find class of window
+xprop then click on window
+
+# Prepend text to all files in a folder
+for f in *.jpg; do mv "$f" "word_$f"; done
+
+# Resize all images in a folder
+mogrify -resize 820x *.jpg
+
+# Resize all images in folders recursively
+find . -name '*.jpg' -execdir mogrify -resize 820x {} \;
+
+# Change keyboard layout for session
+setxkbmap us
+
+# Fonts location
+~/.local/share/fonts
+
+# List all fonts in system
+fc-list
+
+
+# Scroll lock, pause the output
+Pause     Ctrl+s
+Unpause   Ctrl+q
+
+# Move all content of folder up a level
+rsync -vua --delete-after foo/ .
+
+# Recursively list files modified in the last n days
+find -ctime -n
+
+# Start mySQL
+sudo systemctl start mysqld.service
+
+# Copy gpg keys to one machine to another
+
+# On first machine
+gpg --export ${ID} > public.key
+gpg --export-secret-key ${ID} > private.key
+
+# On second machine
+gpg --import public.key
+gpg --import private.key
+gpg --list-keys
+pgp --edit-key <Key ID>
+trust
+5
+
+# List biggest folders recursively
+du -hs */ | sort -nr | head
+
+# Burn ISO to USB drive
+sudo dd bs=512M if=image.iso  of=/dev/sdx
+
+# Download folder to local
+rsync -avz -P user@host:/path/to/folder folder/
+rsync -avz -P -e 'ssh -p 52342' user@host:/path/to/folder folder/
+
+# Copy/upload folder over to server
+rsync -avz -P folder/ user@host:/path/to/folder
+rsync -avz -P -e 'ssh -p 52342' folder/ user@host:/path/to/folder
+
+# Test if terminal supports 256 colors
+curl -s https://gist.githubusercontent.com/HaleTom/89ffe32783f89f403bba96bd7bcd1263/raw/ | bash
+
+# Test if site uses gzip compression
+curl -I -H 'Accept-Encoding: gzip,deflate' https://www.mysite.com
+
+# Refresh Firefox
+xvkbd -window 'Firefox Developer Edition' -text "\Cr"
+
+# Check a website for broken links (404)
+linkchecker https://www.mysite.com --check-extern --verbose --output=csv >> 404.csv
+
+# Download audio of whole YouTube playlist
+youtube-dl --ignore-errors --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s" [PLAYLIST URL]
+
+# Upgrade youtube-dl
+pip3 install --upgrade youtube-dl
+
+# Insert PDF into multi-page PDF
+qpdf --empty --pages origin.pdf 1-12 insert.pdf 3 origin.pdf 14-z -- output.pdf
+
+# Join PDFs
+convert 1.pdf 2.pdf 3.pdf joined.pdf
+pdfunite 1.pdf 2.pdf 3.pdf joined.pdf
+
+
+# Scan open ports of a server
+nmap -Pn vps-335500c8.vps.ovh.net
+
+# Refresh DNS cache (for when modifying /etc/hosts)
+sudo resolvectl flush-caches
+or
+systemctl restart systemd-resolved.service
+
+# Update sources are in
+/etc/apt/sources.list.d
+
+#}}}
+
+#{{{ Chrome
+
+# Emulate CSS print styles in browser
+- Open dev tools
+- Press Esc to open bottom pane
+- Click 3 dots > Rendering
+- At the bottom, select "print" in "Emulate CSS media type"
+
+#}}}
+
+#{{{ Capistrano
+
+# Might need "bundle exec" prefixed
+
+# Deploy
+cap production deploy
+
+# Rollback to previous version
+cap deploy:rollback
+
+# Rollbakc to specific release
+cap deploy:rollback -s previous_release=/path/to/desired_release
+
+# }}}
+
+#{{{ CSS
+
+# Good practices:
+- Make rules as short as possible
+- Use the cascade, from general to specific
+- Avoid elements and IDs
+- Modularize, including media queries
+
+# vertical center
+.container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.item {
+  max-width: 50%;
+}
+
+.item-top {
+  align-self: flex-start;
+}
+
+.item-bottom {
+  align-self: flex-end;
+}
+
+# Make child appear behind parent
+.parent {
+    transform-style: preserve-3d;
+}
+.child {
+    transform: translateZ(-10px)
+}
+
+
+#}}}
+
+#{{{ Devilbox
+
+# Start all containers in the background
+docker-compose up -d
+
+# Stop all containers
+docker-compose stop
+docker-compose rm -f
+
+# Restart all containers
+docker-compose stop
+docker-compose rm -f
+docker-compose up -d
+
+# Devilbox intranet (once docker started)
+https://localhost
+
+# To create a new project
+1. Create folder ~/devilbox/data/www/[projectname]
+2. Create folder ~/devilbox/data/www/[projectname]/htdocs/
+   |-> this is where the server will look for files
+
+New project URL will be http://[projectname].loc
+
+# Enter the PHP container
+~/devilbox/.shell.sh
+
+#}}}
+
+#{{{ Docker
+
+# Installation
+mins docker
+mins docker-compose
+sudo systemctl start docker
+sudo systemctl enable docker
+
+
+# Containers
+List all containers                    docker ps
+Stop all running containers            docker stop $(docker ps -aq)
+Remove all containers                  docker rm $(docker -ps -aq)
+k
+
+# Images
+Remove all images                      docker rmi $(docker images -q)
+j
+
+# Install php extension
+login into container
+apt-get install -y <extension> (ex: libxslt-dev)
+docker-php-ext-install <extension> (ex: xsl)
+add extension in php.ini (ex: extension=xsl.so)
+restart container
+
+#}}}
+
+#{{{ Excel
+
+# Check validity of email format
+=AND(ISERROR(MATCH("?*@?*.?*",A1,0))=0,ISERROR(FIND(" ",A1)))
+
+#}}}
+
+#{{{ Firefox
+
+# Show / hide bookmarks toolbar
+Alt+v t b
+
+#}}}
+
+#{{{ Git
+
+# Define identity
+git config --global user.name "Michael Wassmer"
+git config --global user.email mike@mwm-webdesign.com
+
+# Add local folder to new repo
+cd existing_folder
+git init
+git remote add origin git@gitlab.com:mwmdev/dotfiles.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+# If you get "ERROR: The project you were looking for could not be found or you don't have permission to view it"
+Add this in .ssh/config
+
+Host gitlab.com
+  ClearAllForwardings yes
+  User git
+  IdentityFile ~/.ssh/id_rsa
+
+# Change remote origin url
+git remote set-url origin git@gitlab.com:mwmdev/dotfiles.git
+
+# List remote origin url
+git remote show origin
+
+# Stop tracking file (remove from repo, leave locally)
+git rm --cached file
+
+# Stop tracking folder (remove from repo, leave locally)
+git rm -r --cached folder
+
+# Git status without untracked files
+git status -uno
+
+# Force pull from repo to overwrite local files
+git fetch --all
+git reset --hard origin/<branch_name>
+
+# Diff between repo and local (name only)
+git diff --name-only origin/master
+
+# Diff between file and HEAD
+git diff HEAD <file>
+
+# Diff on folders between two branches with meld
+git difftool -t meld -d master..mybranch
+
+# Force push to repo
+git push -u origin <branch_name> --force
+
+# Recreate repo based on .gitignore
+git rm -r --cached .
+git add .
+git commit -m ".gitignore fix"
+git push -u origin master
+
+# List files tracked by git
+git ls-tree -r HEAD
+
+# List files and folders ignored by git
+git status --ignored
+
+# List the commits ready to pull after a fetch
+git log origin/master ^master
+
+# List recent commits
+git log --oneline | nl -v0 | sed 's/^ \+/&HEAD~/'
+
+# List 10 largest files in repo
+git ls-tree -r -l --abbrev --full-name HEAD | sort -n -r -k 4 | head -n 10
+
+# Modify most recent commit message
+git commit --amend
+
+# Revert to 10 minutes ago in case of mistake
+git reset --hard master@{"10 minutes ago"}
+
+# If port 22 is closed, switch to https
+edit .git/config and change url to https
+
+# Search repo history for a string
+git log -p -S<string>
+
+# Purge a file from repo history
+# (run from repo root with relative path)
+git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch path/to/file' --prune-empty --tag-name-filter cat -- --all
+git push -u origin master
+
+# Unstage a file
+git reset HEAD <file>
+
+# Undelete a file
+git checkout <file>
+
+# Delete a file and stage it (same as system delete + git add)
+git rm <file>
+
+# Merge a branch into current branch
+git merge <branch-to-merge>
+
+# Rename a branch
+git branch -m <oldname> <newname>
+
+# Delete a branch
+git branch -D <branch>
+
+# Get another branch after cloning a repo
+# (cloning downloads master only, what if you need another branch)
+git checkout -b <otherbranch> origin/<otherbranch>
+
+# Clone a specific branch of a repo
+git clone -b <branch> <url_of_repo>
+
+# Download GitLab snippet
+https://gitlab.com/snippets/SNIPPET_ID/raw?line_ending=raw
+
+# Manage dotfiles
+git init --bare $HOME/.dotfiles
+git config --global alias.dotfiles '!git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+git dotfiles config --local status.showUntrackedFiles no
+git dotfiles remote add origin <remote repo>
+
+# Clone dotfiles on new machine
+git clone --bare <remote repo> $HOME/.dotfiles
+git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout -f
+
+
+#}}}
+
+#{{{ HTML
+
+# META viewport for correct responsive styles
+<meta name = "viewport" content = "width=device-width, initial-scale=1, maximum-scale=1" >
+
+#}}}
+
+#{{{ Lightdm
+
+# Change login background
+sudo vim /etc/lightdm/slick-greeter.conf
+and change the background line
+
+#}}}
+
+#{{{ lnav
+
+# Keep only lines containing a string
+:filter-in <string>
+
+# Keep only lines NOT containing a string
+:filter-out <string>
+
+# Toggle low res mode (useful for copying output)
+Ctrl+L
+
+# Word wrap
+:enable-word-wrap
+
+#}}}
+
+#{{{ Local (Wordpress dev)
+
+# Load media from remote site
+- Set server to Apache
+- Add this at the beginning of .htaccess
+
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+  RewriteBase /
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{HTTP_HOST} ^testsite\.mwm$
+  RewriteRule ^wp-content/uploads/(.*)$ https://www.prodsite.org/wp-content/uploads/$1 [NC,L]
+</IfModule>
+
+# Auto login to admin
+?localwp_auto_login=1
+
+# Disable xdebug
+- Add this at the beginning of wp-config.php
+ini_set('display_errors', '0');
+ini_set('display_startup_errors', '0');
+
+# Prevent the Stack trace in debug log
+- in config/php/php.ini.hbs, comment out the [xdebug] section with {{!-- --}}
+
+# Use global wp-cli for sites
+In project root folder create wp-cli.local.yml :
+
+path: app/public
+require:
+  - wp-cli.local.php
+
+and wp-cli.local.php :
+
+<?php
+define('DB_HOST', 'localhost:/home/mike/.config/Local/run/BtYSOv133/mysql/mysqld.sock' );
+
+// Only display fatal run-time errors.
+// See http://php.net/manual/en/errorfunc.constants.php.
+error_reporting(E_ERROR);
+
+// Disable WordPress debug mode.
+// See https://codex.wordpress.org/WP_DEBUG.
+define('WP_DEBUG', false);
+
+replace the db host by the socket on the Database tab of Local
+
+Also check that php has mysqli extension enabled and enough memory (512)
+
+#}}}
+
+#{{{ MPV
+
+Set subtitle delay                     z / x
+
+#}}}
+
+#{{{ MySQL
+
+# Start mariadb
+systemctl start mariadb
+
+# mariadb status
+systemctl status mariadb.service
+
+# Change wordpress password
+UPDATE `wp_users` SET `user_pass`= MD5('yourpassword') WHERE `user_login`='yourusername';
+
+#}}}
+
+#{{{ Neomutt
+
+Compose a new mail                     m
+Reply to message                       r
+Forward message                        f
+View attachments                       v
+Go to inbox                            gi
+Go to drafts                           gd
+Go to sent                             gs
+Go to junk                             gj
+Go to trash                            gt
+Switch to other account                i<id>
+Change folder                          y
+Add sender to abook                    a
+Sort messages                          o
+Limit message to subj./sender/date     L
+Search                                 /
+Delete message                         D
+Sync mailbox                           $
+Toggle sidebar                         B
+
+#}}}
+
+#{{{ Newsboat
+
+# URL format
+http://feeds.reuters.com/Reuters/worldNews <tag> "!<name>"
+
+# Query feed for tags
+"query:<label>:tags # \"<tag>\""
+
+# Favorites
+Toggle favorite                        <Ctrl>e + F
+
+# YouTube channels
+Look for "cannonical" in channel home page source
+
+#}}}
+
+#{{{ NFS
+- On Tesla, setup NFS permissions for shared folder to : IP, Read/Write, No mapping, sys, enable asynchronous
+- On client sudo chown -R mike:mike /mountpoints/
+- On client sudo chmod -R 755 /mountpoints/
+# }}}
+
+#{{{ Node.js
+
+# Install npm package globally
+npm install -g <package>
+
+# Link package to current project
+sudo npm link <package>
+
+#}}}
+
+#{{{ Nomachine
+
+# Roaming
+- Check Temple IP with : ip route | sed -n 's/.* src \(.*\) metric .*/\1/p' | uniq
+- Open port 4000 on router > Virtual server and forward to Temple IP
+- On noip.com, check that dynamic dns in active
+- If not, check on Tesla if noip dyndns is active
+- On Temple, check that VPN is inactive
+
+#}}}
+
+#{{{ Oxygen
+
+# Post migration
+Save permalinks
+Resign your shortcodes via Oxygen > Settings > Shortcodes
+Regenerate CSS cache via Oxygen > Settings > CSS Cache
+
+
+#}}}
+
+#{{{ PHP
+
+# Convert Ymd string into formatted localized time
+setlocale( LC_TIME, 'fr_FR.UTF-8' );
+$date_o = DateTime::createFromFormat( 'Ymd', $mydate );
+$date_f = strftime( '%d %B', $date_o -> getTimestamp() );
+
+or
+
+$start_date = get_field( 'date_debut' );
+$start_date_o = DateTime::createFromFormat( 'Ymd', $start_date );
+$start_date_f = date_i18n( 'd M', $start_date -> getTimestamp() );
+
+# If locale is missing
+sudo dpkg-reconfigure locales
+
+# If / else one liner
+$x = ( $myvalue == 10 ) ? "the value is 10": "the value is not 10";
+
+# Launch server from command line
+php -S localhost:8000 -t folder/
+
+
+#}}}
+
+#{{{ Printing
+
+# Install Brother DCP1612W drivers
+yaourt -S brother-dcp1610w
+sudo system-config-printer
+
+#}}}
+
+#{{{ Plesk / Ubuntu server
+
+# Stop firewall
+service psa-firewall stop
+
+# If emails don't arrive to same domain
+Deactivate the email service, emails are still sent by php
+
+# When HTTPs sites are unreachable
+# Check that firewall has https service and ports
+firewall-cmd --list-all
+firewall-cmd --permanent --zone=public --add-service=https
+firewall-cmd --permanent --zone=public --add-port=8443/tcp
+
+# When mysql doesn't start
+
+# Check that there are no errors here
+vim /var/log/mysql/error.log
+
+# Add a remote user for DB
+vim /etc/mysql/my.cnf
+bind-address = 0.0.0.0
+service mysql restart
+plesk db
+GRANT ALL ON <database>.* TO <user>@'<server ip>' IDENTIFIED BY '<password>';
+FLUSH PRIVILEGES;
+
+# Then test with :
+mysql -u auneor -p"Jkgt8&T96Ozdbubf" -h 151.80.24.155 -D cs_www
+
+# If WP login dosn't work and Plesk returns error 500
+Most likely no more free disk space
+Login and then su - to root and ncdu then free space
+
+# If PDF image generation doesn't work
+sudo vim /etc/ImageMagick-6/policy.xml
+find the line with PDF pattern
+and replace "none" with "read | write"
+restart PHP
+then use this plugin : Force Regenerate Thumbnails
+
+# Setup subdomain for Plesk admin
+- Create A rule for subdomain and point to server IP
+- Access plesk through new subdomain
+- In Plesk go to Tools & Settings > SSL/TLS Certificates
+- Click on +Let's Encrypt and enter subdomain
+- Click the settings icon on Keep Plesk Secured and enter subdomain
+- Go to Tools & Settings > General Settings > Server Settings and enter subdomain in Server Hostname
+
+#}}}
+
+#{{{ Python
+
+# Use virtual environment
+virtualenv env
+source env/bin/activate
+pip install -r requirements.txt
+
+# Exit venv
+deactivate
+
+"}}}
+
+#{{{ Qutebrowser
+
+# New tab
+Ctrl+t
+
+# Close tab
+Ctrl+w
+
+# Toggle inspector
+wi
+
+# View source
+gf
+
+# Bookmark page
+M
+
+# Show navigation hints on page
+f
+
+#}}}
+
+#{{{ Redis
+
+# Be careful, il messes up everything when installed on wordpress mail domaine and also on subdomain of that domain
+
+https://metablogue.com/install-redis-object-cache-for-wordpress-on-plesk/#
+
+# Install
+sudo apt install redis-server
+sudo vim /etc/redis/redis.conf
+Change "supervised no" to "supervised systemd"
+sudo systemctl restart redis
+
+# Ping
+redis-cli ping
+
+# Check status
+sudo systemctl status redis
+
+# Config file
+sudo vim /etc/redis/redis.conf
+
+# Flush all caches
+redis-cli flushall
+
+#}}}
+
+#{{{ Regolith Linux
+
+# Reload
+regolith-look refresh
+
+# Search possible packages
+apt search regolith-i3-
+
+# Search status bar blocks
+apt search i3xrocks-
+
+# How to config things
+1. Install the package
+2. Copy the config file from /usr/share/regolith/i3/config.d/ to ~/.config/regolith2/i3/config.d/
+3. Check the variable in the config file, and change it in Xressources
+4. Remove the package with apt
+
+#}}}
+
+#{{{ Ranger
+
+https://ranger.github.io/cheatsheet.png
+
+Help                                   F1
+Inspect file                           F3 or i
+Edit file                              F4
+Copy file                              F5 or y
+Cut file                               F6 or d
+Create directory                       F7
+Delete                                 F8
+Trash file                             DD
+Open bookmarks                         ' or `
+Save bookmark                          m
+New tab in current dir                 <Ctrl>n
+Switch tabs                            <Tab>
+Show log                               W
+Show background tasks                  w
+Reload directory                       R
+Go back in history                     H
+Go forward in history                  L
+Toogle options                         z
+Toggle show hidden files               zh
+
+
+#}}}
+
+#{{{ Ruby on Rails
+
+# Start server
+rails s
+
+# Open rails console
+rails c
+
+# Open rails console on production env
+rails c production
+
+# Open rails console on production env with sandbox
+rails c production --sandbox
+
+# Info about the environment
+gem environment
+
+# Create new project with mysql db
+rails new <projectname> -d mysql
+
+# Install bundle
+bundle install
+
+# List all gems with their version
+bundle show
+
+# Update one gem
+
+# Generate a controller
+rails generate controller demo index
+
+# Generate a model
+rails generate model User
+
+# List all routes
+rails routes
+
+# Create a localized record
+topic = Topic.create(name: "Newtopic")
+I18n.locale = :fr
+topic.name = "Nouvelle Thématique"
+topic.save
+
+# Create a migration
+rails generate migration [description] (ex: add_desc_to_resources)
+
+Migrations are stored in db/migrate
+
+# Run a migration
+rails db:migrate
+
+# List DB tables
+rails c
+ActiveRecord::Base.connection.tables
+
+# List columns of a DB table
+rails c
+ActiveRecord::Base.connection.columns('projects').map(&:name)
+
+# Rollback last migration
+rake db:rollback STEP=1
+
+# Capistrano
+
+# Version
+cap -v
+
+# Deploy
+cap production deploy
+
+# Restart puma
+cap production deploy:restart
+
+# Check RVM
+cap production rvm:check
+
+# RVM
+
+# List versions
+rvm list
+
+# Point to a previous release
+Just change the current symbolic link to a previous release
+
+#}}}
+
+#{{{ SASS
+
+https://sass-lang.com/documentation
+http://compass-style.org/
+
+#{{{ Variables
+
+# Colors and fonts
+
+$blue: #0076A3;
+$green: #548C27;
+
+$color-main: $blue;
+$color-alternate: $green;
+$color-alternate: $green;
+$font-main: 'Roboto', Helvetica, sans-serif;
+
+#}}}
+
+#{{{ Nesting
+
+.media{
+
+  margin: 0;
+  padding: 0;
+
+  .item{
+    margin-bottom: 5px;
+    background: $blue;
+  }
+
+  .head{
+    color: $red;
+    font-size: 2rem;
+  }
+
+}
+
+#}}}
+
+#{{{ Partials
+
+# style.scss becomes an importer for other styles
+@import "variables"
+@import "normalize"
+@import "base"
+@import "modules/media"
+etc.
+
+# Partials files can be prepended with a "_"
+modules/_media.scss
+_base.scss
+_normalize.scss
+_variables.scss
+style.scss
+
+#}}}
+
+#{{{ Mixins
+
+# In mixins.scss
+@mixin imagegrid($qty, $margin) {
+  width: ((100% - (($qty - 1) * $margin))/$qty);
+  &:nth-child(n) {
+    margin-right: $margin;
+    margin-bottom: $margin;
+  }
+  &:nth-child(#{$qty}n) {
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+}
+
+# In interface.scss
+.grid {
+  @include clearfix;
+  .item {
+    float: left;
+    @include imagegrid(5, 1%);
+  }
+  img {
+    display: block;
+    border-radius: 10px;
+    max-width: 100%;
+  }
+}
+
+#}}}
+
+#{{{ Class extend
+
+.btn{
+  display: block;
+  border-radius: 3px;
+}
+
+.btn-default{
+  @extend .btn:
+  color: $blue;
+}
+
+.btn-active{
+  @extend .btn:
+  color: $blue;
+}
+
+# Then you can also hide the btn class, and only use the extended versions, by renaming it %btn everywhere
+
+#}}}
+
+#{{{ Referencing parent element
+
+.item{
+  margin: 0;
+  color: #FFF;
+  &:hover{
+    color: #3CF;
+  }
+}
+
+#}}}
+
+#{{{ Clearfix with extend
+
+%clearfix {
+  zoom:1;
+  &:before, &:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+#head {
+  @extend %clearfix;
+  padding: 45px 0 14px; margin: 0 35px 0;
+  border-bottom: 1px solid $border;
+}
+
+#}}}
+
+#{{{ Contextual targeting
+
+.item{
+  color: red;
+  background: white;
+  /* When .item is in #footer apply these styles : */
+  #footer &{
+    color: green;
+  }
+
+#}}}
+
+#{{{ Comments
+
+# Show comment even in compressed mode
+/*! Lorem ipsum */
+
+# Never show comments
+// My comment
+
+#}}}
+
+#{{{ Color functions
+
+https://www.sass-lang.com/documentation/functions/color
+
+#}}}
+
+#{{{ Lists
+https://sass-lang.com/documentation/functions/list
+
+$roundness: 10px 0 10px 5px;
+
+.item{
+  border-radius: $roundness;
+}
+
+# Get nth element of a list
+.item{
+  border-radius: nth($roundness, 1);
+}
+
+#}}}
+
+#{{{ Sending content to a mixin
+
+# In mixins.scss
+@mixin break($length) {
+  @media (min-width: $length) {
+    @content;
+  }
+}
+
+# In navigation.scss
+.branding {
+  float: left;
+  display: none;
+  @include break(1000px) {
+    display: block;
+  }
+}
+
+#}}}
+
+#{{{ If statements
+
+# In mixins.scss
+@mixin break($args...) { /* three dots means possible multiple args */
+  @if length($args) == 1 {
+    @media (min-width: nth($args, 1)) {
+      @content;
+    }
+  } @else {
+    @media (min-width: nth($args, 1))
+      and (max-width: nth($args, 2)) {
+        @content;
+    }
+  }
+}
+
+# In interface.scss
+footer{
+  margin-top: 20px;
+  @include break(0, 500px) {
+    display: none;
+  }
+}
+
+#}}}
+
+#{{{ Loops with @for
+
+$color-headlines: $blue, $purple, $green, $red;
+
+@for $item from 1 through length($color-headlines) {
+  h#{item} {
+    color: nth($color-headlines, $item);
+  }
+}
+
+#}}}
+
+#{{{ Going though a list with @each
+
+$color-btn-names: 'default', 'hot', 'cool';
+$color-btn-values: $color-main, $red, $blue;
+
+@each $name in $color-btn-names {
+  $i: index($color-btn-names, $name);
+
+  .btn-#{$name} {
+    @extend %btn;
+    background-color: nth($color-btn-values, $i);
+  }
+}
+
+#}}}
+
+#{{{ Associative arrays (maps)
+
+$color-btns: (
+  default: $color-main,
+  hot: $red,
+  cold: $blue
+);
+
+button-default{
+  background-color: map-get( $color-btns, default );
+}
+
+@each $key, $value in $color-btns {
+  .btn-#{$key} {
+    @extend %btn;
+    background-color: $value;
+  }
+}
+
+#}}}
+
+#{{{ Command line
+
+sass --watch app/sass/style.scss:style.css --style=compressed
+
+#}}}
+
+# Fix error « Node Sass does not yet support your current environment: Linux 64-bit with Unsupported runtime (88) »
+npm rebuild node-sass
+
+#}}}
+
+#{{{ SimpleScreenRecorder
+
+# Record sound input/output
+Best with ALSA [default] Default source and soundcore mini as output / High Fidelity Playback (A2DP Sink) and Digital Input (S/PDIF) - HD Pro Webcam
+
+#{{{ surf
+
+# Delete the cache
+rm -rf ~/.surf/cache
+
+#}}}
+
+#{{{ Skype
+
+# If it doesn't open after update
+sudo sysctl kernel.unprivileged_userns_clone=1
+echo kernel.unprivileged_userns_clone = 1 | sudo tee /etc/sysctl.d/00-local-userns.conf
+
+#}}}
+
+#{{{ Termux
+
+# Connect to phone via SSH
+sshd # On phone
+termux-wifi-connectioninfo # On phone, to determine IP
+ssh -p 8022 [IP] # On computer
+
+#}}}
+
+#{{{ tmux
+Ctrl+a                    Bind key
+c                         New window
+f                         Find window
+-                         Split horizontal
+_                         Split vertical
+h                         Move left
+l                         Move right
++                         Maximize pane
+m                         Toggle mouse mode
+r                         Reload configuration
+d                         Detach (exit)
+[bind] m                  Toggle mouse
+[bind] [ /                Search scrollback
+
+# Copy paste text
+[bind] [                  Enter visual copy mode
+Space                     Begin highlighting
+Enter                     Copy
+[bind] ]                  Paste
+
+# Kill all sessions
+tmux kill-server
+
+#}}}
+
+#{{{ Vim
+
+# Files
+Find a file                            :find <file>
+Reload current file                    :e
+Sudo write file                        :w !sudo tee %
+Recently opened files                  :ol
+
+# Navigation
+Jump to top of page                    gg
+Jump to bottom of page                 G
+Move to the beginning of the line      0 or ^
+Jump to matching element               %
+Jump to beginning of next word         w
+Jump to beginning of previous word     B
+Jump to next paragraph                 {
+Jump to previous paragraph             }
+Jump to relative line number           <num>k
+Jump back one step in history          <Ctrl>o
+
+# Inserting
+Jump a line and insert                 o
+Insert line above and insert           O
+Toogle current line commenting*        gcc
+Autocomplete next                      <Ctrl>n
+Autocomplete previous                  <Ctrl>p
+Find a file                            <Ctrl>xf
+Complete word in insert mode           <Ctrl>x<Ctrl>p
+Complete line in insert mode           <Ctrl>x<Ctrl>l
+Code autocomplete                      <Ctrl>x<Ctrl>o
+
+# Cut / Yank / Paste
+Select inside a pair                   vi<char> (ex: ])
+Yank word                              yiw
+Yank all                               ggvG$
+Yank all                               :%y
+Delete end of the word and insert      cw
+Delete inner word and insert           ciw
+Delete until next space                dE
+Delete until the end of the line       <Shift>d
+Delete all text within tag             cit
+Delete all text within char pair       ci<char>
+Delete around a sentence               das
+Change word until character            ct<char>
+Yank all paragraph                     yap
+Paste over paragraph                   1vp
+Paste over word (beginning)            vep
+Paste over word (inside)               viwp
+Yank word to register                  "<reg>yw
+Paste word from register               "<reg>p
+Paste word from register (insert mode) <Ctrl>r<reg>
+
+# Marks
+Define a mark                          m<mark>
+Jump to mark                           '<mark>
+
+# Selecting text (Visual mode)
+Select next word                       w
+Find on line                           f<char>
+Find word under cursor                 *
+
+# Searching
+Search and replace                     :%s/foo/bar/g
+Clear search highlighting              :noh
+
+# Folding
+Toggle fold                            za
+Open all folds                         zR
+Close all folds                        zM
+
+# Indenting
+Indent the whole file                  =G
+
+# Tabs
+Switch to next tab                     gt
+Switch to previous tab                 gT
+Close all tabs and quit                :qa
+Move tab                               :tabm <+|-><n>
+
+# Splits
+Split vertically                       :vsp
+Split horizontally                     :sp
+Split vertically and open file         :vsp <filename>
+Maximize split height                  <Ctrl>w_
+Maximize split width                   <Ctrl>w|
+Normalize split sizes                  <Ctrl>w=
+Resize split*                          <Ctrl><arrow>
+Create new window with empty file      <Ctrl>wn
+
+# Commands
+Run a shell command                    :!<command>
+
+# Buffers
+List buffers                           :ls
+Switch to buffer                       :b <buffer>
+Delete buffer                          :bd
+Open buffer in vertical split          :vert sb [n]
+
+# Diff
+Difference between two splits          :windo diffthis
+Close diff                             :diffoff
+
+# Abbreviations
+Add an abbreviation                    :abb <abb> <full text>
+Prevent expanding                      <abb><Ctrl>v
+
+# External commands
+Run an external shell command          :!<command>
+Create custom command (file as param)  :comm! <name> !<command> %
+Insert the return value of a command   :r !<com>
+
+# Tidy HTML file
+:!tidy -mi -html -wrap 0 %
+
+# Plus commands
+Execute a command when launching vim   vim file.txt +<com> +<com>
+
+# Diff mode
+Open files in diff mode                vim -d file1 file2
+Copy over a diff                       dp
+
+# Settings
+Show line numbers                      :set number
+Show syntax highlighting               :syntax on
+
+# Open a remote file
+:e scp://user@host/relative/path/from/home/file.php
+:e scp://user@host//absolute/path/file.php
+
+# Close popup window
+:call popup_close(win_getid())
+
+# netrw
+Create a new file                      %
+Delete file or directory               <del> or D
+Go up one directory                    -
+Create a directory                     d
+Rename a file or directory             R
+Toggle hidden files                    gh
+Cycle tree listing styles              i
+
+# Nerdtree
+Open file in horizontal split          i
+Open file in vertical split            s
+Create a file                          m a
+Create a directory                     m a/
+
+# Fugitive
+Git add current file                   :Gwrite %
+Git commit current file                :Gcommit %
+Git push                               :Gpush origin <branch>
+Git status                             :Gstatus
+Git rm                                 :Gremove
+
+# Surround
+Surround line                          yss<surround>
+Surround whole word                    ysiw<surround>
+Surround X words                       ysXaw<surround>
+Delete surround character              ds<surround>
+Delete surround tag                    dst
+Change surround character              cs<old><new>
+Change surround tag                    cst<new>
+
+# Vimwiki
+Open index file                        [number]<leader>ww
+Open index file in new tab             [number]<leader>wt
+List and select available wikis        <leader>ws
+Delete page                            <leader>wd
+Rename page                            <leader>wr
+Open diary index                       [number]<leader>wi
+Update current diary index             <leader>w<leader>i
+Open today's diary file                [number]<leader>w<leader>w
+
+#}}}
+
+#{{{ Vifm
+
+Switch pane                            <Tab> or <Space>
+Explore file                           e
+Create a directory                     :mkdir
+Toggle select                          t
+Edit                                   i or l or <Enter>
+Search                                 /
+Start shell in direcory                s
+File info                              <Ctrl>g
+Toggle hidden files                    za
+Rename file                            cw
+Change group                           cg
+Change owner                           co
+Empty trash                            :empty
+Sort                                   :sort or S
+Invert sorting order                   :invert o
+Start shell in current directory       :shell or s
+Toggle preview window                  w
+Open file in current gvim instance     o
+Open file in new instance of gvim      O
+Yank current dir path                  yd
+Yank current file path                 yf
+Calculate size                         ga
+
+#}}}
+
+#{{{ Virtualmin
+
+# Create virtual server
+1. On domain name, redirect A fields to server IP
+2. In Virtualmin, create virtual server with domain name
+3. In Webmin > FirewallD, open http/https services
+4. In Virtualmin, request a Let's Encrypt Certificate
+
+#}}}
+
+#{{{ Visual Studio Code
+
+# Select a projest
+Shift+Alt+P
+
+# Focus on folders
+,f
+
+# Focus on region view
+,r
+
+# Focus on editor
+,e
+
+# Focus on todo
+,d
+
+# Focus on copilot
+,c
+
+# Focus on terminal
+,t
+
+# Focus on problems
+,p
+
+# Edit snippets
+,s
+
+# Toggle side bar
+,b
+
+# Run task
+,k
+
+#}}}
+
+#{{{ OVH VPS
+
+# Setup
+
+1. Connect with system user (ex: debian)
+2. Edit /etc/ssh/sshd_config and set PermitRootLogin yesand change port with Port 52342
+3. Restart SSH with systemctl restart sshd
+4. Change password with sudo passwd
+5. Switch to root account with sudo su -
+6. Change root password with passwd
+7. Exit and test new passwords (add new port to command with -p)
+8. Copy keys with ssh-copy-id -p 52342 root@IP
+
+
+#}}}
+
+#{{{ WP-CLI
+
+# Install on shared host
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+chmod +x wp-cli.phar
+add alias wp="~/wp-cli.phar" in .bash_aliases
+exit and reconnect
+
+# Check for WP core updates
+wp core check-update
+
+# Update WP core
+wp core update
+
+# List available plugin updates
+wp plugin list --update=available
+
+# Update all plugins
+wp plugin update --all
+
+# Delete all post revisions
+wp post delete $(wp post list --post_type='revision' --format=ids --force)
+
+# Delete spam comments
+wp comment delete $(wp comment list --status=spam --format=ids)
+
+# Delete expired transients
+wp transient delete --expired
+
+# Optimize database
+wp db optimize
+
+# Delete trashed posts
+wp post delete $(wp post list --post_status=trash --format=ids)
+
+# Regenerate thumbnails, including PDF
+wp media regenerate --yes --path=/var/www/vhosts/my-site.com/htdocs
+
+# List migration profiles
+wp migratedb profiles
+
+# Run migration profile
+wp migratedb profile <n>
+
+#}}}
+
+#{{{ Xmodmap
+Special keyboard mappings are set in ~/.Xmodmap
+and are loaded automatically on startup editing with
+
+sudo crontab -e
+
+and adding
+
+@reboot xmodmap ~/.Xmodmap
+#}}}
+
+
