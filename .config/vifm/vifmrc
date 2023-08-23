@@ -194,6 +194,8 @@ fileviewer {*.pdf},<application/pdf> pdftotext -nopgbrk %c -
 
 " PostScript
 filextype {*.ps,*.eps,*.ps.gz},<application/postscript>
+        \ {View in sioyek}
+        \ sioyek %f,
         \ {View in zathura}
         \ zathura %f,
         \ {View in gv}
