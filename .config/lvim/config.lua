@@ -3,6 +3,9 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 --
+
+require("user.options")
+
 --{{{ Look and feel
 -- Theme
 lvim.colorscheme = "gruvbox"
@@ -33,21 +36,36 @@ lvim.builtin.which_key.mappings["t"] = {
 lvim.plugins = {
 
 	--{{{ Github Copilot
-	{
-		"github/copilot.vim",
-		event = "VeryLazy",
-		config = function()
-			vim.g.copilot_assume_mapped = true
-			vim.g.copilot_no_tab_map = true
-		end,
-	},
-	{
-		"hrsh7th/cmp-copilot",
-		config = function()
-			lvim.builtin.cmp.formatting.source_names["copilot"] = "( )"
-			table.insert(lvim.builtin.cmp.sources, 2, { name = "copilot" })
-		end,
-	},
+	-- {
+	-- 	"github/copilot.vim",
+	-- 	event = "VeryLazy",
+	-- 	config = function()
+	-- 		vim.g.copilot_assume_mapped = true
+	-- 		vim.g.copilot_no_tab_map = true
+	-- 	end,
+	-- },
+	-- {
+	-- 	"hrsh7th/cmp-copilot",
+	-- 	config = function()
+	-- 		lvim.builtin.cmp.formatting.source_names["copilot"] = "( )"
+	-- 		table.insert(lvim.builtin.cmp.sources, 2, { name = "copilot" })
+	-- 	end,
+	-- },
+  --}}}
+
+	--{{{ Github Copilot
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
   --}}}
 
   --{{{ Chat GPT
@@ -81,26 +99,32 @@ lvim.plugins = {
   --}}}
 
   --{{{ Colorizer
-  {
-    "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup({ "css", "scss", "html", "javascript" }, {
-        RGB = true, -- #RGB hex codes
-        RRGGBB = true, -- #RRGGBB hex codes
-        RRGGBBAA = true, -- #RRGGBBAA hex codes
-        rgb_fn = true, -- CSS rgb() and rgba() functions
-        hsl_fn = true, -- CSS hsl() and hsla() functions
-        css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-        css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-      })
-    end,
-  },
+  -- {
+  --   "norcalli/nvim-colorizer.lua",
+  --   config = function()
+  --     require("colorizer").setup({ "css", "scss", "html", "javascript" }, {
+  --       RGB = true, -- #RGB hex codes
+  --       RRGGBB = true, -- #RRGGBB hex codes
+  --       RRGGBBAA = true, -- #RRGGBBAA hex codes
+  --       rgb_fn = true, -- CSS rgb() and rgba() functions
+  --       hsl_fn = true, -- CSS hsl() and hsla() functions
+  --       css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+  --       css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+  --     })
+  --   end,
+  -- },
   --}}}
 
   --{{{ Trouble
   {
   "folke/trouble.nvim",
     cmd = "TroubleToggle",
+  },
+  --}}}
+  --
+  --{{{ Table mode
+  {
+  "dhruvasagar/vim-table-mode",
   },
   --}}}
 
@@ -144,6 +168,25 @@ lvim.plugins = {
 
 }
 --}}}
+
+local ok, copilot = pcall(require, "copilot")
+if not ok then
+  return
+end
+
+copilot.setup {
+  suggestion = {
+    keymap = {
+      accept = "<c-l>",
+      next = "<c-j>",
+      prev = "<c-k>",
+      dismiss = "<c-h>",
+    },
+  },
+}
+
+local opts = { noremap = true, silent = true }
+vim.api.nvim_set_keymap("n", "<c-s>", "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<CR>", opts)
 
 --{{{ Folding
 vim.opt.foldenable = true

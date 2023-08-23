@@ -31,7 +31,7 @@ return {
   s( { trig = "l", dscr = "error_log" },
     fmt(
         [[
-        error_log( "{} : " . ${} );{}
+        error_log( "{} : " . print_r( ${}, true ) );{}
         ]],
       {
         i(1),
@@ -40,5 +40,19 @@ return {
       }
     )
   ),
+  -- }}}
+  -- {{{ query monitor log
+  -- s( { trig = "m", dscr = "query monitor log" },
+  --   fmt(
+  --       [[
+  --       do_action( 'qm/notice', print_r( ${}, true ) );{}
+  --       ]],
+  --     {
+  --       i(1),
+  --       i(2),
+  --       i(0),
+  --     }
+  --   )
+  -- )
   -- }}}
 }
