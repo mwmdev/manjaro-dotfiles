@@ -67,7 +67,7 @@ alias v='lvim'
 alias python='python3'
 
 # LM chat
-alias n='cd ~/scripts/neuma && source env/bin/activate && python3 neuma.py'
+alias n='. ~/Applications/repos/neuma/start.sh'
 
 # Webcam
 alias mcam='mpv /dev/video0'
@@ -159,7 +159,7 @@ alias mvfr='$EDITOR ~/.config/vifm/vifmrc'
 alias mnbt='$EDITOR ~/.config/newsboat/config'
 alias mnbu='$EDITOR ~/.config/newsboat/urls'
 alias msal='$EDITOR ~/.ssh_aliases'
-alias mcrt='sudo crontab -e'
+alias mcrt='crontab -e'
 #}}}
 
 # Remote servers connexions
