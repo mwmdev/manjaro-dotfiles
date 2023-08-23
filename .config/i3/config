@@ -60,22 +60,22 @@ set $ws12 "12:󰧰  Scratch "
 #{{{ Dropdown Windows
 
 # Terminal
-for_window [instance="dd_term"] floating enable, resize set 800 600, move scratchpad
+# for_window [instance="dd_term"] floating enable, resize set 800 600, move scratchpad
 
 # Help
-for_window [instance="dd_help"] floating enable, resize set 600 800, move scratchpad
+# for_window [instance="dd_help"] floating enable, resize set 600 800, move scratchpad
 
 # File browser
-for_window [instance="dd_filebrowser"] floating enable, resize set 800 600, move scratchpad
+# for_window [instance="dd_filebrowser"] floating enable, resize set 800 600, move scratchpad
 
 # Calculator
-for_window [instance="dd_calc"] floating enable, resize set 300 200, move scratchpad
+# for_window [instance="dd_calc"] floating enable, resize set 300 200, move scratchpad
 
 # Spotify
-for_window [instance="dd_spot"] floating enable, resize set 800 600, move scratchpad
+# for_window [instance="dd_spot"] floating enable, resize set 800 600, move scratchpad
 
 # Ai Assistant
-for_window [instance="dd_ai"] floating enable, resize set 800 600, move scratchpad
+# for_window [instance="dd_ai"] floating enable, resize set 800 600, move scratchpad
 
 #}}}
 
@@ -92,19 +92,19 @@ assign [class="libreoffice"] $ws7
 #{{{ Floating applications
 
 # Terminal applications
-for_window [class="URxvt" title="mpsyt"] floating enable
-for_window [class="URxvt" title="tremc"] floating enable
-for_window [class="URxvt" title="alsamixer"] floating enable
-for_window [class="URxvt" title="youtube-dl"] floating enable
-for_window [class="URxvt" title="dict"] floating enable
-for_window [class="URxvt" title="trans"] floating enable
-for_window [class="URxvt" title="vifm"] floating enable
+# for_window [class="URxvt" title="tremc"] floating enable
+# for_window [class="URxvt" title="alsamixer"] floating enable
+# for_window [class="URxvt" title="youtube-dl"] floating enable
+# for_window [class="URxvt" title="dict"] floating enable
+# for_window [class="URxvt" title="trans"] floating enable
+# for_window [class="URxvt" title="vifm"] floating enable
 
 # GUI applications
 for_window [class="Surf"] floating enable resize grow width 400px, move position center
 for_window [class="Local"] floating enable resize set 600 400, move scratchpad
-for_window [class="Prepros"] floating enable resize set 600 400, move scratchpad
-for_window [class="Gcolor3"] floating enable resize set 400 300, move position center
+for_window [class="Prepros"] floating enable resize set 800 600, move scratchpad
+
+for_window [class="Gcolor3"] floating enable resize set 800 600, move position center
 for_window [class="GParted"] floating enable, move position center
 for_window [class="SimpleScreenRecorder"] floating enable, move position center
 for_window [class="Lxappearance"] floating enable
@@ -131,9 +131,8 @@ for_window [title="Find in current message"] floating enable resize shrink heigh
 
 #{{{ First row
 
-## Workspace back and forth
+# Workspace back and forth
 bindsym $mod+Escape workspace back_and_forth
-
 
 # Switch to workspace 1
 bindsym $mod+F1 workspace $ws1
@@ -171,282 +170,291 @@ bindsym $mod+F11 workspace $ws11
 # Switch to workspace 12
 bindsym $mod+F12 workspace $ws12
 
-## Help widget
-bindsym $mod+ampersand [instance="dd_help"] scratchpad show,move position center
+# Help widget
+bindsym $mod+ampersand exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e vim ~/help -c 'set nonumber' -c 'Goyo'"
 
-## Move window to workspace 1
+# Move window to workspace 1
 bindsym $mod+Shift+ampersand move container to workspace $ws1;
 
-## File browser
-bindsym $mod+eacute [instance="dd_filebrowser"] scratchpad show,move position center
+# Devdocs
+bindsym $mod+Ctrl+ampersand exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t surf https://devdocs.io"
 
-## Move window to workspace 2
+# File browser
+bindsym $mod+eacute exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e vifm"
+
+# Move window to workspace 2
 bindsym $mod+Shift+eacute move container to workspace $ws2;
 
-## Local
-bindsym $mod+quotedbl [instance="local"] scratchpad show,move position center
+# Local
+bindsym $mod+quotedbl exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t local-by-flywheel"
 
-## Move window to workspace 3
+# Move window to workspace 3
 bindsym $mod+Shift+quotedbl move container to workspace $ws3;
 
-## Prepros
-bindsym $mod+apostrophe [instance="prepros"] scratchpad show,move position center
+# Prepros
+bindsym $mod+apostrophe exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t /opt/prepros/prepros"
 
-## Move window to workspace 4
+# Move window to workspace 4
 bindsym $mod+Shift+apostrophe move container to workspace $ws4;
 
-## TODO
+# TODO
 #bindsym $mod+parentleft exec
 
-## Move window to workspace 5
+# Move window to workspace 5
 bindsym $mod+Shift+parenleft move container to workspace $ws5;
 
-## Shrinks inner gaps
+# Shrinks inner gaps
 bindsym $mod+minus gaps inner all minus 5
 
-## Move window to workspace 6
+# Move window to workspace 6
 bindsym $mod+Shift+minus move container to workspace $ws6;
 
-## Move window to workspace 7
+# Move window to workspace 7
 bindsym $mod+Shift+egrave move container to workspace $ws7;
 
-## TODO
+# TODO
 #bindsym $mod+underscore exec
 
-## TODO
+# TODO
 #bindsym $mod+minus exec
 
-## Move window to workspace 8
+# Move window to workspace 8
 bindsym $mod+Shift+underscore move container to workspace $ws8;
 
-## Move window to workspace 9
+# Move window to workspace 9
 bindsym $mod+Shift+ccedilla move container to workspace $ws9;
 
-## TODO
+# TODO
 #bindsym $mod+agrave exec
 
-## Move window to workspace 10
+# Move window to workspace 10
 bindsym $mod+Shift+agrave move container to workspace $ws10;
 
-## TODO
+# TODO
 #bindsym $mod+parentright exec
 
-## Move window to workspace 11
+# Move window to workspace 11
 bindsym $mod+Shift+parenright move container to workspace $ws11;
 
-## Grows inner gaps
+# Grows inner gaps
 bindsym $mod+equal gaps inner all plus 5
 
-## Move window to workspace 12
+# Move window to workspace 12
 bindsym $mod+Shift+equal move container to workspace $ws12;
 
-## Kill current container
+# Kill current container
 bindsym $mod+BackSpace kill
 
 #}}}
 
 #{{{ Second row
 
-## Sound mixer
+# Sound mixer
 bindsym $mod+a exec pavucontrol
 
-## Alternative sound mixer
+# Alternative sound mixer
 bindsym $mod+Shift+a exec $alterm -name alsamixer -e alsamixer
 
-## Video meeting
+# Video meeting
 bindsym $mod+z exec zoom
 
-## Alternate Video Meeting
-bindsym $mod+Shift+z exec teams-for-linux
+# Alternate Video Meeting
+bindsym $mod+Shift+z exec brave https://teams.live.com/
 
-## Messaging
+# Messaging
 bindsym $mod+e exec skypeforlinux
 
-## Alternative messaging
+# Alternative messaging
 bindsym $mod+Shift+e exec surf https://web.whatsapp.com
 
-## Alternative messaging
-bindsym $mod+Ctrl+Shift+e exec surf https://web.telegram.com
+# FIX : Alternative messaging
+bindsym $mod+Ctrl+Shift+e exec surf https://web.telegram.org
 
-## Screen recorder
+# Screen recorder
 bindsym $mod+r exec simplescreenrecorder
 
-## i3 Restart
+# i3 Restart
 bindsym $mod+Shift+r exec i3 restart
 
-## Text editor
+# Text editor
 bindsym $mod+t exec mousepad
 
-## Torrent client
-bindsym $mod+Shift+t exec $alterm -name tremc -e tremc
+# Torrent client
+bindsym $mod+Shift+t exec qbittorrent
 
-## YouTube player
-bindsym $mod+y exec $alterm -name mpsyt -e mpsyt
+# YouTube player
+# bindsym $mod+y exec $alterm -name mpsyt -e mpsyt
 
-## Download YouTube video
-bindsym $mod+Shift+y exec $alterm -name youtube-dl -e youtube-dl --add-metadata -ic -o "~/Downloads/video/%(title)s.%(ext)s" "$(xclip -selection p -o)"
+# Download YouTube video
+# bindsym $mod+Shift+y exec $alterm -name youtube-dl -e youtube-dl --add-metadata -ic -o "~/Downloads/video/%(title)s.%(ext)s" "$(xclip -selection p -o)"
 
-## Freetube
+# Freetube
 # bindsym $mod+Ctrl+y exec freetube-bin
 
-## Sync tool 
+# Sync tool 
 bindsym $mod+u exec grsync
 
-## Mount Downloads partition
+# Mount Downloads partition
 # bindsym $mod+Shift+u exec udisksctl mount -b /dev/sda5
 
-## Vector graphics editor
+# Vector graphics editor
 bindsym $mod+i exec inkscape
 
-## TODO
+# TODO
 #bindsym $mod+Shift+i exec
 
 # Office program
 bindsym $mod+o exec libreoffice
 
-## TODO
+# TODO
 #bindsym $mod+Shift+o exec
 
-## Graphics design
+# Graphics design
 bindsym $mod+p exec gimp
 
-## Password store
-# bindsym $mod+Shift+p [instance="bitwarden"] scratchpad show,move position center
-# bindsym $mod+Ctrl+p [instance="qtpass"] scratchpad show,move position center
+# TODO
+# bindsym $mod+Shift+p 
+# bindsym $mod+Ctrl+p 
 
-## Painting
+# Painting
 bindsym $mod+asciicircum exec krita
 
-## Color picker
+# Color picker
 bindsym $mod+Shift+dead_circumflex exec gcolor3
 
-## Move to scratchpad
+# Move to scratchpad
 bindsym $mod+dollar move scratchpad
 
-## Show scratchpad
+# Show scratchpad
 bindsym $mod+Shift+dollar scratchpad show
 
-## Terminal
+# Cointop
+bindsym $mod+Ctrl+dollar exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e cointop"
+
+# Terminal
 bindsym $mod+Return exec $term
 
-## Alternative terminal
+# Alternative terminal
 bindsym $mod+Shift+Return exec $alterm
 
-## Audio previous
+# Second alternative terminal
+bindsym $mod+Ctrl+Return exec cool-retro-term
+
+# Audio previous
 bindsym XF86AudioPrev exec $prev
 
-## Audio rewind
+# Audio rewind
 bindsym $mod+XF86AudioPrev exec $lilbak
 
-## Audio pause
+# Audio pause
 bindsym XF86AudioPlay exec $pause
 
-## Audio shuffle
+# Audio shuffle
 bindsym $mod+XF86AudioPlay exec $shuffle
 
-## Audio next
+# Audio next
 bindsym XF86AudioNext exec $next
 
-## Audio forward
+# Audio forward
 bindsym $mod+XF86AudioNext exec $lilfor
 
-## TODO
+# TODO
 #bindsym $mod+Prior exec
 
-## TODO
+# TODO
 #bindsym $mod+Shift+Prior exec
 
-## Focus up
+# Focus up
 bindsym $mod+Up exec focus up
 
-## Focus down
+# Focus down
 #bindsym $mod+Shift+Up move up
 
-## TODO
+# TODO
 #bindsym $mod+Next exec
 
-## TODO
+# TODO
 #bindsym $mod+Shift+Next exec
 
-## Screenshot (fullscreen)
+# Screenshot (fullscreen)
 bindsym Print exec --no-startup-id i3-scrot
 
-## Screenshot (select region)
+# Screenshot (select region)
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 
 #}}}
 
 #{{{ Third row
 
-## Screen lock
+# Screen lock
 bindsym $mod+q exec --no-startup-id blurlock
 
-## i3 Exit
+# i3 Exit
 bindsym $mod+Shift+q mode "$mode_system"
 
-## Music player 
-bindsym $mod+s [instance="dd_spot"] scratchpad show,move position center
+# Music player 
+bindsym $mod+s exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e ncspot"
 
-## Download YouTube audio
-bindsym $mod+Shift+s exec $alterm -name youtube-dl -e youtube-dl --add-metadata --audio-format mp3 -xic -o "~/Downloads/audio/%(title)s.%(ext)s" "$(xclip -selection p -o)"
+# FIX Download YouTube audio
+# bindsym $mod+Shift+s exec $alterm -name youtube-dl -e youtube-dl --add-metadata --audio-format mp3 -xic -o "~/Downloads/audio/%(title)s.%(ext)s" "$(xclip -selection p -o)"
 
-## Open Lofi Cafe
-bindsym $mod+Ctrl+s exec surf https://lofi.cafe
+# Open Lofi Cafe
+bindsym $mod+Ctrl+s exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t chromium -kiosk https://lofi.cafe"
 
-## Projects
+# Projects
 bindsym $mod+d exec bash ~/Localserver/p.sh
 bindsym $mod+Shift+d exec bash ~/Applications/repos/mwm-tools/i3-resurrect-dmenu.sh
 
-## File browser
+# File browser
 bindsym $mod+f exec $term -e vifm
 
-## Fullscreen
+# Fullscreen
 bindsym $mod+Shift+f fullscreen toggle
 
-## GUI filebrowser
-bindsym $mod+Ctrl+f exec pcmanfm
+# GUI filebrowser
+bindsym $mod+Ctrl+f exec thunar
 
 # AI Assistant
-bindsym $mod+g [instance="dd_ai"] scratchpad show,move position center
-# bindsym $mod+Shift+g exec lutris
+bindsym $mod+g exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e ~/Applications/repos/neuma/start.sh"
+# bindsym $mod+Shift+g 
 
-## i3 Focus left
+# i3 Focus left
 bindsym $mod+h focus left
 
-## Move container left
+# Move container left
 bindsym $mod+Shift+h move container left
 
-## i3 Focus down
+# i3 Focus down
 bindsym $mod+j focus down
 
-## i3 Move container down
+# i3 Move container down
 bindsym $mod+Shift+j move container down
 
-## i3 Focus up
+# i3 Focus up
 bindsym $mod+k focus up
 
-## i3 Move container up
+# i3 Move container up
 bindsym $mod+Shift+k move container up
 
-## i3 Focus right
+# i3 Focus right
 bindsym $mod+l focus right
 
-## i3 Move container right
+# i3 Move container right
 bindsym $mod+Shift+l move container right
 
-## Mail client
-# bindsym $mod+m exec thunderbird
+# Mail client
+bindsym $mod+m exec brave --new-tab https://mail.proton.me
 
-## System monitor
+# System monitor
 bindsym $mod+Shift+m exec $term -e btop
 
-## Translator
+# Translator
 bindsym $mod+ugrave exec $alterm -name trans -e ~/Applications/repos/mwm-tools/trans
 
-## Dictionary
+# Dictionary
 bindsym $mod+Shift+ugrave exec $alterm -name dict -e ~/Applications/repos/mwm-tools/dict
 
-## Security cam 1 live view (loaded locally by concatenating config.local)
+# Security cam 1 live view (loaded locally by concatenating config.local)
 # bindsym $mod+asterisk
 
 # # Security cam 2 live view (loaded locally by concatenating config.local)
@@ -458,166 +466,166 @@ bindsym $mod+Ctrl+asterisk exec mpv /dev/video1
 # Laptop camera stream
 bindsym $mod+Ctrl+Shift+asterisk exec mpv /dev/video0
 
-## Volume down
+# Volume down
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
 
-## TODO
+# TODO
 #bindsym $mod+XF86AudioLowerVolume exec
 
-## TODO
+# TODO
 #bindsym $mod+Shift+XF86AudioLowerVolume exec
 
-## Volume up
+# Volume up
 bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks
 
-## TODO
+# TODO
 #bindsym $mod+XF86AudioRaiseVolume exec
 
-## TODO
+# TODO
 #bindsym $mod+Shift+XF86AudioRaiseVolume exec
 
-## Mute
+# Mute
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
 
-## TODO
+# TODO
 #bindsym $mod+XF86AudioMute exec
 
-## TODO
+# TODO
 #bindsym $mod+Shift+XF86AudioMute exec
 
-## TODO
+# TODO
 #bindsym $mod+Home exec
 
-## TODO
+# TODO
 #bindsym $mod+Shift+Home exec
 
-## i3 focus left
+# i3 focus left
 bindsym $mod+Left focus left
 
-## i3 move container to the left
+# i3 move container to the left
 #bindsym $mod+Shift+Left move left
 
-## i3 focus down
+# i3 focus down
 bindsym $mod+Down focus down
 
-## i3 move container down
+# i3 move container down
 bindsym $mod+Shift+Down move down
 
-## i3 focus right
+# i3 focus right
 bindsym $mod+Right focus right
 
-## i3 move container to the right
+# i3 move container to the right
 bindsym $mod+Shift+Right move right
 
-## TODO
+# TODO
 #bindsym $mod+Insert exec
 
-## TODO
+# TODO
 #bindsym $mod+Shift+Insert exec
 
 #}}}
 
 #{{{ Fourth row
 
-## Dropdown terminal
-bindsym $mod+less [instance="dd_term"] scratchpad show,move position center
+# Dropdown terminal
+bindsym $mod+less exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty"
 
 # FIX
 #bindsym $mod+Shift+less
 
-## Random wallpaper
+# Random wallpaper
 bindsym $mod+w exec feh --randomize --bg-scale ~/Pictures/Wallpapers/*
 
-## i3 Resize mode
+# i3 Resize mode
 bindsym $mod+Shift+w mode "Resize"
 
-## Calculator
-bindsym $mod+x [instance="dd_calc"] scratchpad show,move position center
+# Calculator
+bindsym $mod+x exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t gnome-calculator"
 
-## TODO
+# TODO
 #bindsym $mod+Shift+x exec
 
-## Code editor
+# Code editor
 bindsym $mod+c exec $term -e lvim
 bindsym $mod+Ctrl+c exec $term -e nvim
 
-## Split horizontally
+# Split horizontally
 bindsym $mod+Shift+c split h;exec notify-send 'Split horizontally'
 
-## Virtualization
+# Virtualization
 bindsym $mod+v exec virtualbox
 
-## Split vertically
+# Split vertically
 bindsym $mod+Shift+v split v;exec notify-send 'Split vertically'
 
-## Browser
+# Browser
 bindsym $mod+b exec brave
 
-## Alternate browsers
+# Alternate browsers
 bindsym $mod+Shift+b exec firefox
-bindsym Ctrl+$mod+b exec qutebrowser
+bindsym $mod+Ctrl+b exec qutebrowser
 
-## News reader
+# News reader
 bindsym $mod+n exec $term -e newsboat
 
-## TODO
+# TODO
 #bindsym $mod+Shift+n exec
 
-## Docked display settings
+# Docked display settings
 # bindsym $mod+comma exec xrandr --output LVDS1 --off --output DP2 --auto
 
-## Un-docked display settings
+# Un-docked display settings
 # bindsym $mod+Shift+comma exec xrandr --output DP2 --off --output LVDS1 --auto
 
-## Application menu
+# Application menu
 bindsym $mod+semicolon exec --no-startup-id morc_menu
 
-## System menu
-bindsym $mod+Shift+semicolon exec $term -e 'bmenu'
+# System menu
+bindsym $mod+Shift+semicolon exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e bmenu"
 
-## Global menu
+# Global menu
 bindsym $mod+colon exec --no-startup-id dmenu_recency
 
-## TODO
+# TODO
 #bindsym $mod+Shift+colon
 
-## Layouts
+# Layouts
 bindsym $mod+exclam layout default
 bindsym $mod+Shift+exclam layout tabbed
 bindsym $mod+Ctrl+Shift+exclam layout stacking
 
-## TODO
+# TODO
 #bindsym $mod+[Brightless] exec
 
-## TODO
+# TODO
 #bindsym $mod+Shift+[Brightless] exec
 
-## TODO
+# TODO
 #bindsym $mod+[Brightmore] exec
 
-## TODO
+# TODO
 #bindsym $mod+Shift+[Brightmore] exec
 
-## TODO
+# TODO
 #bindsym $mod+End exec
 
-## TODO
+# TODO
 #bindsym $mod+Shift+End exec
 
 #}}}
 
 #{{{ Fifth row
 
-## Switch to next workspace
+# Switch to next workspace
 bindsym $mod+Ctrl+l workspace next
 
-## Switch to previous workspace (Doesn't work ?!)
+# Switch to previous workspace (Doesn't work ?!)
 bindsym $mod+Ctrl+h workspace prev
 
-## i3 mode toggle
+# i3 mode toggle
 bindsym $mod+space focus mode_toggle
 
-## i3 float toggle
+# i3 float toggle
 bindsym $mod+Shift+space floating toggle
 
 #}}}
@@ -677,22 +685,10 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
-exec --no-startup-id protonvpn-tray
+# exec --no-startup-id protonvpn-tray
 exec --no-startup-id xautolock -time 120 -locker blurlock
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id devmon
 exec_always --no-startup-id unclutter
-exec --no-startup-id transmission-daemon
-exec --no-startup-id $term --class dd_help -e vim ~/help -c "set nonumber" -c "Goyo"
-exec --no-startup-id $term --class dd_filebrowser -e vifm
-exec --no-startup-id $term --class dd_term
-exec --no-startup-id $term --class dd_calc -e bc -q
 exec_always --no-startup-id picom -b
-exec --no-startup-id /opt/prepros/prepros
-exec --no-startup-id local-by-flywheel
-exec --no-startup-id $term --class dd_spot -e ncspot 
-exec --no-startup-id $term --class dd_ai -e ~/Applications/repos/neuma/start.sh
 #}}}
 
 #{{{ Colors
@@ -753,7 +749,7 @@ bar {
   status_command i3blocks
 	position bottom
 
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+# please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #	tray_output primary
 #	tray_output eDP1
 
