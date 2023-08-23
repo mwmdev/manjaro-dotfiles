@@ -1,5 +1,5 @@
 # Use powerline
-USE_POWERLINE="true"
+USE_POWERLINE="false"
 
 # Source manjaro-zsh-configuration
 if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
@@ -15,7 +15,19 @@ if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
 
+# Load profile 
+if [ -f ~/.profile ]; then
+    . ~/.profile
+fi
+
 # Private (API Keys, etc.)
 if [ -f ~/.private ]; then
     . ~/.private
 fi
+
+# Functions
+
+# CD into a folder
+fcd() {
+    cd "$(find ~ -maxdepth 8 -not -path '*/\.git/*' -type d | fzf --height 40% --reverse --prompt='Choose folder: ' --pointer='➡')"
+}
