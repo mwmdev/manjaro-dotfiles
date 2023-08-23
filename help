@@ -243,6 +243,14 @@ cap deploy:rollback -s previous_release=/path/to/desired_release
 
 # }}}
 
+#{{{ CRON
+
+# cronie
+mins cron
+systemctl enable cronie.service
+
+#}}}
+
 #{{{ CSS
 
 # Good practices:
@@ -648,6 +656,22 @@ sudo npm link <package>
 - On noip.com, check that dynamic dns in active
 - If not, check on Tesla if noip dyndns is active
 - On Temple, check that VPN is inactive
+
+#}}}
+
+#{{{ OVH VPS
+
+# Setup
+
+1. Connect with system user (ex: debian)
+2. Edit /etc/ssh/sshd_config and set PermitRootLogin yesand change port with Port 52342
+3. Restart SSH with systemctl restart sshd
+4. Change password with sudo passwd
+5. Switch to root account with sudo su -
+6. Change root password with passwd
+7. Exit and test new passwords (add new port to command with -p)
+8. Copy keys with ssh-copy-id -p 52342 root@IP
+
 
 #}}}
 
@@ -1237,6 +1261,8 @@ npm rebuild node-sass
 # Record sound input/output
 Best with ALSA [default] Default source and soundcore mini as output / High Fidelity Playback (A2DP Sink) and Digital Input (S/PDIF) - HD Pro Webcam
 
+#}}}
+
 #{{{ surf
 
 # Delete the cache
@@ -1462,6 +1488,21 @@ Open today's diary file                [number]<leader>w<leader>w
 
 #}}}
 
+#{{{ Lunarvim
+
+# Snippets
+Snippets are in .config/lvim/luasnippets
+
+#{{{ File explorer (nvim-tree)
+
+# Show help
+g?
+
+#}}}
+
+
+#}}}
+
 #{{{ Vifm
 
 Switch pane                            <Tab> or <Space>
@@ -1533,22 +1574,6 @@ Shift+Alt+P
 
 # Run task
 ,k
-
-#}}}
-
-#{{{ OVH VPS
-
-# Setup
-
-1. Connect with system user (ex: debian)
-2. Edit /etc/ssh/sshd_config and set PermitRootLogin yesand change port with Port 52342
-3. Restart SSH with systemctl restart sshd
-4. Change password with sudo passwd
-5. Switch to root account with sudo su -
-6. Change root password with passwd
-7. Exit and test new passwords (add new port to command with -p)
-8. Copy keys with ssh-copy-id -p 52342 root@IP
-
 
 #}}}
 
