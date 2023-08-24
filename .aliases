@@ -66,6 +66,9 @@ alias v='lvim'
 # Python
 alias python='python3'
 
+# Python virtualenv
+alias venv='source venv/bin/activate'
+
 # LM chat
 alias n='. ~/Applications/repos/neuma/start.sh'
 
