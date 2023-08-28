@@ -171,6 +171,9 @@ du -hs */ | sort -nr | head
 # Burn ISO to USB drive
 sudo dd bs=512M if=image.iso  of=/dev/sdx
 
+# Clone disk with progress
+sudo dd if=/dev/nvme0n1 of=/dev/nvme1n1 bs=64k conv=sync,noerror,notrunc iflag=fullblock status=progress
+
 # Download folder to local
 rsync -avz -P user@host:/path/to/folder folder/
 rsync -avz -P -e 'ssh -p 52342' user@host:/path/to/folder folder/
@@ -360,6 +363,47 @@ Alt+v t b
 
 #}}}
 
+#{{{ Flask
+
+# Set flask app
+export FLASK_APP=myapp.py
+
+# Start server
+flask run
+
+# Debug mode
+export FLASK_DEBUG=1
+
+or
+
+if __name__ == '__main__':
+  app.run(debug=True)
+
+# SQAlchemy create db
+in a shell:
+from [project] import app, db
+app.app_context().push()
+db.create_all()
+
+# SQAlchemy create db entry
+in a shell:
+from [project] import User, Post, app, db
+app.app_context().push()
+user_1 = User(username='Mike',email='mike@mwm.codes', password='password')
+db.session.add(user_1)
+db.session.commit()
+
+# SQLAlchemy query examples
+User.query.all()
+User.query.first()
+User.query.filter_by(username='Mike').all()
+
+# SQLA drop tables
+db.drop_all()
+
+
+#}}}
+
 #{{{ Git
 
 # Define identity
@@ -489,6 +533,8 @@ git dotfiles remote add origin <remote repo>
 git clone --bare <remote repo> $HOME/.dotfiles
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout -f
 
+# Hide .git on server in .htacess
+RedirectMatch 404 /\.git
 
 #}}}
 
