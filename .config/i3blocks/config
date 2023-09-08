@@ -106,6 +106,11 @@ PAUSE_LABEL=󰏤
 #TIMER_LOOP=true
 NEUTRAL_COLOR=#282828
 
+[battery]
+command=$SCRIPT_DIR/battery
+markup=pango
+interval=30
+
 # Date Time
 [time]
 label=  

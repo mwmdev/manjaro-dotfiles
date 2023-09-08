@@ -403,7 +403,8 @@ bindsym $mod+Ctrl+s exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,65
 
 # Projects
 bindsym $mod+d exec bash ~/Localserver/p.sh
-bindsym $mod+Shift+d exec bash ~/Applications/repos/mwm-tools/i3-resurrect-dmenu.sh
+# bindsym $mod+Shift+d exec bash ~/Applications/repos/mwm-tools/i3-resurrect-dmenu.sh
+bindsym $mod+Shift+d exec --no-startup-id "i3-scratchpad -acc -d1000x1200 -p1300,650 -mt -t obsidian"
 
 # File browser
 bindsym $mod+f exec $term -e vifm
