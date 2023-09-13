@@ -1,0 +1,791 @@
+# i3 config file (v4)
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+#{{{ General settings
+
+# Modifier key (Mod1=<Alt>, Mod4=<Super>)
+set $mod Mod4
+
+# Default editor
+set $ed lvim
+
+# Default terminal
+set $term --no-startup-id alacritty
+
+# Alternative terminal
+set $alterm --no-startup-id urxvt
+
+# Default desktop layout <default|stacked|tabbed>
+workspace_layout default
+
+# Border style <normal|1pixel|pixel xx|none|pixel>
+default_border pixel 3
+default_floating_border normal
+
+# Hide borders
+hide_edge_borders none
+
+# Font for window titles and bar
+font xft:JetBrainsMono Nerd Front Mono 10
+
+# Use Mouse+$mod to drag floating windows
+floating_modifier $mod
+
+# Focus following mouse
+focus_follows_mouse no
+
+# Workspace back and forth switching (with/without active container)
+workspace_auto_back_and_forth yes
+
+# Switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+#}}}
+
+#{{{ Workspace names
+set $ws1   "1:  Home"
+set $ws2   "2:  Browse"
+set $ws3   "3:  Dev 1"
+set $ws4   "4:  Dev 2"
+set $ws5   "5:  Chat"
+set $ws6   "6:  Design"
+set $ws7   "7:  Office"
+set $ws8   "8:  Virtual"
+set $ws9   "9:  Monitor"
+set $ws10 "10:󰙪  Settings"
+set $ws11 "11:󰔁  Misc"
+set $ws12 "12:󰧰  Scratch "
+#}}}
+
+#{{{ Dropdown Windows
+
+# Terminal
+# for_window [instance="dd_term"] floating enable, resize set 800 600, move scratchpad
+
+# Help
+# for_window [instance="dd_help"] floating enable, resize set 600 800, move scratchpad
+
+# File browser
+# for_window [instance="dd_filebrowser"] floating enable, resize set 800 600, move scratchpad
+
+# Calculator
+# for_window [instance="dd_calc"] floating enable, resize set 300 200, move scratchpad
+
+# Spotify
+# for_window [instance="dd_spot"] floating enable, resize set 800 600, move scratchpad
+
+# Ai Assistant
+# for_window [instance="dd_ai"] floating enable, resize set 800 600, move scratchpad
+
+#}}}
+
+#{{{ Applications / workspace assignments
+assign [class="Skype"] $ws5
+assign [class="Gimp"] $ws6
+assign [class="Inkscape"] $ws6
+assign [class="krita"] $ws6
+assign [class="Mtpaint"] $ws6
+assign [class="com-eteks-sweethome3d-SweetHome3D"] $ws6
+assign [class="libreoffice"] $ws7
+#}}}
+
+#{{{ Floating applications
+
+# Terminal applications
+# for_window [class="URxvt" title="tremc"] floating enable
+# for_window [class="URxvt" title="alsamixer"] floating enable
+# for_window [class="URxvt" title="youtube-dl"] floating enable
+# for_window [class="URxvt" title="dict"] floating enable
+# for_window [class="URxvt" title="trans"] floating enable
+# for_window [class="URxvt" title="vifm"] floating enable
+
+# GUI applications
+for_window [class="Surf"] floating enable resize grow width 400px, move position center
+for_window [class="Local"] floating enable resize set 600 400, move scratchpad
+for_window [class="Prepros"] floating enable resize set 800 600, move scratchpad
+
+for_window [class="Gcolor3"] floating enable resize set 800 600, move position center
+for_window [class="GParted"] floating enable, move position center
+for_window [class="SimpleScreenRecorder"] floating enable, move position center
+for_window [class="Lxappearance"] floating enable
+for_window [class="Manjaro-hello"] floating enable
+for_window [class="Manjaro Settings Manager"] floating enable
+for_window [class="Pamac-manager"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="(?i)virtualbox"] floating enable
+for_window [class="Skype"] floating enable
+for_window [class="Telegram"] floating enable resize grow width 200px, move position center
+for_window [class="Simple-scan"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="Lightdm-settings"] floating enable
+for_window [class="qt5ct"] floating enable
+for_window [class="Qtconfig-qt4"] floating enable
+for_window [title="File Transfer*"] floating enable
+for_window [title="(?i)Compose message"] floating enable, resize shrink height 400px, move position center
+for_window [title="Search messages"] floating enable
+for_window [title="Find in current message"] floating enable resize shrink height 700px, move position center
+
+#}}}
+
+#{{{ Key Bindings
+
+#{{{ First row
+
+# Workspace back and forth
+bindsym $mod+Escape workspace back_and_forth
+
+# Switch to workspace 1
+bindsym $mod+F1 workspace $ws1
+
+# Switch to workspace 2
+bindsym $mod+F2 workspace $ws2
+
+# Switch to workspace 3
+bindsym $mod+F3 workspace $ws3
+
+# Switch to workspace 4
+bindsym $mod+F4 workspace $ws4
+
+# Switch to workspace 5
+bindsym $mod+F5 workspace $ws5
+
+# Switch to workspace 6
+bindsym $mod+F6 workspace $ws6
+
+# Switch to workspace 7
+bindsym $mod+F7 workspace $ws7
+
+# Switch to workspace 8
+bindsym $mod+F8 workspace $ws8
+
+# Switch to workspace 9
+bindsym $mod+F9 workspace $ws9
+
+# Switch to workspace 10
+bindsym $mod+F10 workspace $ws10
+
+# Switch to workspace 11
+bindsym $mod+F11 workspace $ws11
+
+# Switch to workspace 12
+bindsym $mod+F12 workspace $ws12
+
+# Help widget
+bindsym $mod+ampersand exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e vim ~/help -c 'set nonumber' -c 'Goyo'"
+
+# Move window to workspace 1
+bindsym $mod+Shift+ampersand move container to workspace $ws1;
+
+# Devdocs
+bindsym $mod+Ctrl+ampersand exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t surf https://devdocs.io"
+
+# File browser
+bindsym $mod+eacute exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e vifm"
+
+# Move window to workspace 2
+bindsym $mod+Shift+eacute move container to workspace $ws2;
+
+# Local
+bindsym $mod+quotedbl exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t local-by-flywheel"
+
+# Move window to workspace 3
+bindsym $mod+Shift+quotedbl move container to workspace $ws3;
+
+# Prepros
+bindsym $mod+apostrophe exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t /opt/prepros/prepros"
+
+# Move window to workspace 4
+bindsym $mod+Shift+apostrophe move container to workspace $ws4;
+
+# TODO
+#bindsym $mod+parentleft exec
+
+# Move window to workspace 5
+bindsym $mod+Shift+parenleft move container to workspace $ws5;
+
+# Shrinks inner gaps
+bindsym $mod+minus gaps inner all minus 5
+
+# Move window to workspace 6
+bindsym $mod+Shift+minus move container to workspace $ws6;
+
+# Move window to workspace 7
+bindsym $mod+Shift+egrave move container to workspace $ws7;
+
+# TODO
+#bindsym $mod+underscore exec
+
+# TODO
+#bindsym $mod+minus exec
+
+# Move window to workspace 8
+bindsym $mod+Shift+underscore move container to workspace $ws8;
+
+# Move window to workspace 9
+bindsym $mod+Shift+ccedilla move container to workspace $ws9;
+
+# TODO
+#bindsym $mod+agrave exec
+
+# Move window to workspace 10
+bindsym $mod+Shift+agrave move container to workspace $ws10;
+
+# TODO
+#bindsym $mod+parentright exec
+
+# Move window to workspace 11
+bindsym $mod+Shift+parenright move container to workspace $ws11;
+
+# Grows inner gaps
+bindsym $mod+equal gaps inner all plus 5
+
+# Move window to workspace 12
+bindsym $mod+Shift+equal move container to workspace $ws12;
+
+# Kill current container
+bindsym $mod+BackSpace kill
+
+#}}}
+
+#{{{ Second row
+
+# Sound mixer
+bindsym $mod+a exec pavucontrol
+
+# Alternative sound mixer
+bindsym $mod+Shift+a exec $alterm -name alsamixer -e alsamixer
+
+# Video meeting
+bindsym $mod+z exec zoom
+
+# Alternate Video Meeting
+bindsym $mod+Shift+z exec brave https://teams.live.com/
+
+# Messaging
+bindsym $mod+e exec skypeforlinux
+
+# Alternative messaging
+bindsym $mod+Shift+e exec surf https://web.whatsapp.com
+
+# FIX : Alternative messaging
+bindsym $mod+Ctrl+Shift+e exec surf https://web.telegram.org
+
+# Screen recorder
+bindsym $mod+r exec simplescreenrecorder
+
+# i3 Restart
+bindsym $mod+Shift+r exec i3 restart
+
+# Text editor
+bindsym $mod+t exec mousepad
+
+# Torrent client
+bindsym $mod+Shift+t exec qbittorrent
+
+# YouTube player
+# bindsym $mod+y exec $alterm -name mpsyt -e mpsyt
+
+# Download YouTube video
+# bindsym $mod+Shift+y exec $alterm -name youtube-dl -e youtube-dl --add-metadata -ic -o "~/Downloads/video/%(title)s.%(ext)s" "$(xclip -selection p -o)"
+
+# Freetube
+# bindsym $mod+Ctrl+y exec freetube-bin
+
+# Sync tool 
+bindsym $mod+u exec grsync
+
+# Mount Downloads partition
+# bindsym $mod+Shift+u exec udisksctl mount -b /dev/sda5
+
+# Vector graphics editor
+bindsym $mod+i exec inkscape
+
+# TODO
+#bindsym $mod+Shift+i exec
+
+# Office program
+bindsym $mod+o exec libreoffice
+
+# TODO
+#bindsym $mod+Shift+o exec
+
+# Graphics design
+bindsym $mod+p exec gimp
+
+# TODO
+# bindsym $mod+Shift+p 
+# bindsym $mod+Ctrl+p 
+
+# Painting
+bindsym $mod+asciicircum exec krita
+
+# Color picker
+bindsym $mod+Shift+dead_circumflex exec gcolor3
+
+# Move to scratchpad
+bindsym $mod+dollar move scratchpad
+
+# Show scratchpad
+bindsym $mod+Shift+dollar scratchpad show
+
+# Cointop
+bindsym $mod+Ctrl+dollar exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e cointop"
+
+# Terminal
+bindsym $mod+Return exec $term
+
+# Alternative terminal
+bindsym $mod+Shift+Return exec $alterm
+
+# Second alternative terminal
+bindsym $mod+Ctrl+Return exec cool-retro-term
+
+# Audio previous
+bindsym XF86AudioPrev exec $prev
+
+# Audio rewind
+bindsym $mod+XF86AudioPrev exec $lilbak
+
+# Audio pause
+bindsym XF86AudioPlay exec $pause
+
+# Audio shuffle
+bindsym $mod+XF86AudioPlay exec $shuffle
+
+# Audio next
+bindsym XF86AudioNext exec $next
+
+# Audio forward
+bindsym $mod+XF86AudioNext exec $lilfor
+
+# TODO
+#bindsym $mod+Prior exec
+
+# TODO
+#bindsym $mod+Shift+Prior exec
+
+# Focus up
+bindsym $mod+Up exec focus up
+
+# Focus down
+#bindsym $mod+Shift+Up move up
+
+# TODO
+#bindsym $mod+Next exec
+
+# TODO
+#bindsym $mod+Shift+Next exec
+
+# Screenshot (fullscreen)
+bindsym Print exec --no-startup-id i3-scrot
+
+# Screenshot (select region)
+bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+
+#}}}
+
+#{{{ Third row
+
+# Screen lock
+bindsym $mod+q exec --no-startup-id blurlock
+
+# i3 Exit
+bindsym $mod+Shift+q mode "$mode_system"
+
+# Music player 
+bindsym $mod+s exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e ncspot"
+
+# FIX Download YouTube audio
+# bindsym $mod+Shift+s exec $alterm -name youtube-dl -e youtube-dl --add-metadata --audio-format mp3 -xic -o "~/Downloads/audio/%(title)s.%(ext)s" "$(xclip -selection p -o)"
+
+# Open Lofi Cafe
+bindsym $mod+Ctrl+s exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t chromium -kiosk https://lofi.cafe"
+
+# Projects
+bindsym $mod+d exec bash ~/Localserver/p.sh
+# bindsym $mod+Shift+d exec bash ~/Applications/repos/mwm-tools/i3-resurrect-dmenu.sh
+bindsym $mod+Shift+d exec --no-startup-id "i3-scratchpad -acc -d1000x1200 -p1300,650 -mt -t obsidian"
+
+# File browser
+bindsym $mod+f exec $term -e vifm
+
+# Fullscreen
+bindsym $mod+Shift+f fullscreen toggle
+
+# GUI filebrowser
+bindsym $mod+Ctrl+f exec thunar
+
+# AI Assistant
+bindsym $mod+g exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e ~/Applications/repos/neuma/start.sh"
+# bindsym $mod+Shift+g 
+
+# i3 Focus left
+bindsym $mod+h focus left
+
+# Move container left
+bindsym $mod+Shift+h move container left
+
+# i3 Focus down
+bindsym $mod+j focus down
+
+# i3 Move container down
+bindsym $mod+Shift+j move container down
+
+# i3 Focus up
+bindsym $mod+k focus up
+
+# i3 Move container up
+bindsym $mod+Shift+k move container up
+
+# i3 Focus right
+bindsym $mod+l focus right
+
+# i3 Move container right
+bindsym $mod+Shift+l move container right
+
+# Mail client
+bindsym $mod+m exec brave --new-tab https://mail.proton.me
+
+# System monitor
+bindsym $mod+Shift+m exec $term -e btop
+
+# Translator
+bindsym $mod+ugrave exec $alterm -name trans -e ~/Applications/repos/mwm-tools/trans
+
+# Dictionary
+bindsym $mod+Shift+ugrave exec $alterm -name dict -e ~/Applications/repos/mwm-tools/dict
+
+# Security cam 1 live view (loaded locally by concatenating config.local)
+# bindsym $mod+asterisk
+
+# # Security cam 2 live view (loaded locally by concatenating config.local)
+# bindsym $mod+Shift+asterisk
+
+# Docked camera stream
+bindsym $mod+Ctrl+asterisk exec mpv /dev/video1
+
+# Laptop camera stream
+bindsym $mod+Ctrl+Shift+asterisk exec mpv /dev/video0
+
+# Volume down
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
+
+# TODO
+#bindsym $mod+XF86AudioLowerVolume exec
+
+# TODO
+#bindsym $mod+Shift+XF86AudioLowerVolume exec
+
+# Volume up
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks
+
+# TODO
+#bindsym $mod+XF86AudioRaiseVolume exec
+
+# TODO
+#bindsym $mod+Shift+XF86AudioRaiseVolume exec
+
+# Mute
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
+
+# TODO
+#bindsym $mod+XF86AudioMute exec
+
+# TODO
+#bindsym $mod+Shift+XF86AudioMute exec
+
+# TODO
+#bindsym $mod+Home exec
+
+# TODO
+#bindsym $mod+Shift+Home exec
+
+# i3 focus left
+bindsym $mod+Left focus left
+
+# i3 move container to the left
+#bindsym $mod+Shift+Left move left
+
+# i3 focus down
+bindsym $mod+Down focus down
+
+# i3 move container down
+bindsym $mod+Shift+Down move down
+
+# i3 focus right
+bindsym $mod+Right focus right
+
+# i3 move container to the right
+bindsym $mod+Shift+Right move right
+
+# TODO
+#bindsym $mod+Insert exec
+
+# TODO
+#bindsym $mod+Shift+Insert exec
+
+#}}}
+
+#{{{ Fourth row
+
+# Dropdown terminal
+bindsym $mod+less exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty"
+
+# FIX
+#bindsym $mod+Shift+less
+
+# Random wallpaper
+bindsym $mod+w exec feh --randomize --bg-scale ~/Pictures/Wallpapers/*
+
+# i3 Resize mode
+bindsym $mod+Shift+w mode "Resize"
+
+# Calculator
+bindsym $mod+x exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t gnome-calculator"
+
+# TODO
+#bindsym $mod+Shift+x exec
+
+# Code editor
+bindsym $mod+c exec $term -e lvim
+bindsym $mod+Ctrl+c exec $term -e nvim
+
+# Split horizontally
+bindsym $mod+Shift+c split h;exec notify-send 'Split horizontally'
+
+# Virtualization
+bindsym $mod+v exec virtualbox
+
+# Split vertically
+bindsym $mod+Shift+v split v;exec notify-send 'Split vertically'
+
+# Browser
+bindsym $mod+b exec brave
+
+# Alternate browsers
+bindsym $mod+Shift+b exec firefox
+bindsym $mod+Ctrl+b exec qutebrowser
+
+# News reader
+bindsym $mod+n exec $term -e newsboat
+
+# TODO
+#bindsym $mod+Shift+n exec
+
+# Docked display settings
+# bindsym $mod+comma exec xrandr --output LVDS1 --off --output DP2 --auto
+
+# Un-docked display settings
+# bindsym $mod+Shift+comma exec xrandr --output DP2 --off --output LVDS1 --auto
+
+# Application menu
+bindsym $mod+semicolon exec --no-startup-id morc_menu
+
+# System menu
+bindsym $mod+Shift+semicolon exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e bmenu"
+
+# Global menu
+bindsym $mod+colon exec --no-startup-id dmenu_recency
+
+# TODO
+#bindsym $mod+Shift+colon
+
+# Layouts
+bindsym $mod+exclam layout default
+bindsym $mod+Shift+exclam layout tabbed
+bindsym $mod+Ctrl+Shift+exclam layout stacking
+
+# TODO
+#bindsym $mod+[Brightless] exec
+
+# TODO
+#bindsym $mod+Shift+[Brightless] exec
+
+# TODO
+#bindsym $mod+[Brightmore] exec
+
+# TODO
+#bindsym $mod+Shift+[Brightmore] exec
+
+# TODO
+#bindsym $mod+End exec
+
+# TODO
+#bindsym $mod+Shift+End exec
+
+#}}}
+
+#{{{ Fifth row
+
+# Switch to next workspace
+bindsym $mod+Ctrl+l workspace next
+
+# Switch to previous workspace (Doesn't work ?!)
+bindsym $mod+Ctrl+h workspace prev
+
+# i3 mode toggle
+bindsym $mod+space focus mode_toggle
+
+# i3 float toggle
+bindsym $mod+Shift+space floating toggle
+
+#}}}
+
+#}}}
+
+#{{{ Special modes
+
+#{{{ Resize
+# Resize window (you can also use the mouse for that)
+mode "Resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
+
+        # exit resize mode: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+#}}}
+
+#{{{ System
+
+# System (shut down, restart and locking features)
+set $mode_system (l)ock, (e)xit, switch_(u)ser, sus(p)end, (h)ibernate, (r)eboot, (s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym p exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+#}}}
+
+#}}}
+
+#{{{ Autostart applications
+exec_always --no-startup-id feh --bg-scale ~/wallpaper.jpg
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id pamac-tray
+exec --no-startup-id clipit
+exec --no-startup-id blueman-applet
+# exec --no-startup-id protonvpn-tray
+exec --no-startup-id xautolock -time 120 -locker blurlock
+exec_always --no-startup-id unclutter
+exec_always --no-startup-id picom -b
+#}}}
+
+#{{{ Colors
+
+# Color palette used for the terminal ( ~/.Xresources file )
+# Colors are gathered based on the documentation:
+# https://i3wm.org/docs/userguide.html#xresources
+# Change the variable name at the place you want to match the color
+# of your terminal like this:
+# [example]
+# If you want your bar to have the same background color as your
+# terminal background change the line 362 from:
+# background #14191D
+# to:
+# background $term_background
+# Same logic applied to everything else.
+# set_from_resource $term_background background
+# set_from_resource $term_foreground foreground
+# set_from_resource $term_color0     color0
+# set_from_resource $term_color1     color1
+# set_from_resource $term_color2     color2
+# set_from_resource $term_color3     color3
+# set_from_resource $term_color4     color4
+# set_from_resource $term_color5     color5
+# set_from_resource $term_color6     color6
+# set_from_resource $term_color7     color7
+# set_from_resource $term_color8     color8
+# set_from_resource $term_color9     color9
+# set_from_resource $term_color10    color10
+# set_from_resource $term_color11    color11
+# set_from_resource $term_color12    color12
+# set_from_resource $term_color13    color13
+# set_from_resource $term_color14    color14
+# set_from_resource $term_color15    color15
+
+set $bg #282828
+set $red #C53931
+set $green #999831
+set $yellow #CF9A38
+set $blue #538783
+set $purple #AE6A82
+set $aqua #709D6B
+set $lightgray #958675
+set $darkgray #1d2021
+
+# Theme colors
+# class                 border      |backgr     |text       |indicator  |child_border
+client.focused          $darkgray   $lightgray  $bg         $blue       $blue
+client.focused_inactive $darkgray   $darkgray   $lightgray  $darkgrey   $darkgray
+client.unfocused        $darkgray   $darkgray   $lightgray  $yellow     $darkgray
+client.urgent           $red        $red        $white      $red        $red
+
+
+#}}}
+
+#{{{ Status bar
+bar {
+  status_command i3blocks
+	position bottom
+
+# please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+#	tray_output primary
+#	tray_output eDP1
+
+	bindsym button4 nop
+	bindsym button5 nop
+
+	strip_workspace_numbers yes
+
+    colors {
+      background $bg
+      # text color used for blocks that do not have a color specified.
+      statusline $lightgray
+      # workspaces section
+      #                    border  backgr. text
+      focused_workspace    $lightgray $lightgray $bg
+      inactive_workspace   $darkgray $darkgray $lightgray
+      active_workspace     $darkgray $darkgray $lightgray
+      urgent_workspace     $red $red $bg
+    }
+}
+#}}}
+
+#{{{ i3 Gaps
+
+# Set inner/outer gaps
+gaps inner 0
+gaps outer 0
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+smart_gaps off
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+smart_borders on
+
+#}}}
+
+# vim:foldmethod=marker:foldlevel=0
