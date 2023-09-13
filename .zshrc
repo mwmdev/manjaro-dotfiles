@@ -25,6 +25,9 @@ if [ -f ~/.private ]; then
     . ~/.private
 fi
 
+# Generate i3 config file
+cat ~/.config/i3/config.base ~/.config/i3/config.local > ~/.config/i3/config
+
 # Functions
 
 # CD into a folder
