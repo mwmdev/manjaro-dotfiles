@@ -53,6 +53,9 @@ alias d='cd ~/Downloads'
 # When in Localserver/project, jump to project plugins or theme folder
 alias t='cd $(find . -type d -name "public" | head -n 1) && cd wp-content/themes'
 alias p='cd $(find . -type d -name "public" | head -n 1) && cd wp-content/plugins'
+alias vup='cd ~/cloud/dev/www/ && vagrant up'
+
+alias nd='cd ~/cloud/apps/mwm/neuma/'
 #}}}
 
 #{{{ Applications shortcuts
@@ -113,8 +116,8 @@ alias gdp='git dotfiles push'
 # Wordpress
 alias wpgi='wget -O .gitignore "https://gitlab.com/snippets/1699715/raw"'
 alias wpev='wp eval-file eval.php'
-alias wpup='bash ./update.sh'
-alias wpdp='bash ./deploy.sh'
+# alias wpup='bash ./update.sh'
+# alias wpdp='bash ./deploy.sh'
 
 # Browserstack local testing
 alias mbst='sudo ~/Apps/BrowserStackLocal --key vFgsz1AenexVBvdHBzpM'
@@ -141,6 +144,10 @@ alias mwea='curl wttr.in/$WEATHER_TOWN'
 # Matrix
 alias mtrx='cmatrix'
 
+# Sync
+alias msup='grsync -e sync-up'
+alias msdn='grsync -e sync-down'
+
 #}}}
 
 #{{{ Config files shortcuts
@@ -162,6 +169,7 @@ alias mvfr='$EDITOR ~/.config/vifm/vifmrc'
 alias mnbt='$EDITOR ~/.config/newsboat/config'
 alias mnbu='$EDITOR ~/.config/newsboat/urls'
 alias msal='$EDITOR ~/.ssh_aliases'
+alias mvvv='$EDITOR ~/cloud/dev/config/config.yml'
 alias mcrt='crontab -e'
 #}}}
 
