@@ -36,24 +36,6 @@ lvim.builtin.which_key.mappings["t"] = {
 lvim.plugins = {
 
 	--{{{ Github Copilot
-	-- {
-	-- 	"github/copilot.vim",
-	-- 	event = "VeryLazy",
-	-- 	config = function()
-	-- 		vim.g.copilot_assume_mapped = true
-	-- 		vim.g.copilot_no_tab_map = true
-	-- 	end,
-	-- },
-	-- {
-	-- 	"hrsh7th/cmp-copilot",
-	-- 	config = function()
-	-- 		lvim.builtin.cmp.formatting.source_names["copilot"] = "( )"
-	-- 		table.insert(lvim.builtin.cmp.sources, 2, { name = "copilot" })
-	-- 	end,
-	-- },
-  --}}}
-
-	--{{{ Github Copilot
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
@@ -98,34 +80,17 @@ lvim.plugins = {
   },
   --}}}
 
-  --{{{ Colorizer
-  -- {
-  --   "norcalli/nvim-colorizer.lua",
-  --   config = function()
-  --     require("colorizer").setup({ "css", "scss", "html", "javascript" }, {
-  --       RGB = true, -- #RGB hex codes
-  --       RRGGBB = true, -- #RRGGBB hex codes
-  --       RRGGBBAA = true, -- #RRGGBBAA hex codes
-  --       rgb_fn = true, -- CSS rgb() and rgba() functions
-  --       hsl_fn = true, -- CSS hsl() and hsla() functions
-  --       css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-  --       css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-  --     })
-  --   end,
-  -- },
-  --}}}
-
   --{{{ Trouble
   {
   "folke/trouble.nvim",
     cmd = "TroubleToggle",
   },
   --}}}
-  --
+  
   --{{{ Table mode
-  {
-  "dhruvasagar/vim-table-mode",
-  },
+  -- {
+  -- "dhruvasagar/vim-table-mode",
+  -- },
   --}}}
 
   --{{{ TODO Comments
@@ -166,9 +131,39 @@ lvim.plugins = {
   },
   -- }}}
 
+  --{{{ Swenv
+  -- {
+  -- "ChristianChiarulli/swenv.nvim",
+  -- },
+  --}}}
+
+  --{{{ Dressing
+  {
+  "stevearc/dressing.nvim",
+  },
+  --}}}
+
+  --{{{ Nvim dap python
+  -- {
+  -- "mfussenegger/nvim-dap-python",
+  -- },
+  --}}}
+
+  --{{{ Nvim neotest
+  -- {
+  -- "nvim-neotest/neotest",
+  -- },
+  --}}}
+
+  --{{{ Nvim neotest python
+  -- {
+  -- "nvim-neotest/neotest-python",
+  -- },
+  --}}}
 }
 --}}}
 
+--{{{ Copilot setup 
 local ok, copilot = pcall(require, "copilot")
 if not ok then
   return
@@ -187,6 +182,68 @@ copilot.setup {
 
 local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "<c-s>", "<cmd>lua require('copilot.suggestion').toggle_auto_trigger()<CR>", opts)
+--}}}
+
+--{{{ Python environment setup
+
+-- automatically install python syntax highlighting
+-- lvim.builtin.treesitter.ensure_installed = {
+--   "python",
+-- }
+
+-- -- setup formatting
+-- local formatters = require "lvim.lsp.null-ls.formatters"
+-- formatters.setup { { name = "black" }, }
+-- lvim.format_on_save.enabled = true
+-- lvim.format_on_save.pattern = { "*.py" }
+
+-- -- setup linting
+-- local linters = require "lvim.lsp.null-ls.linters"
+-- linters.setup { { command = "flake8", filetypes = { "python" } } }
+
+-- -- setup debug adapter
+-- lvim.builtin.dap.active = true
+-- local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
+-- pcall(function()
+--   require("dap-python").setup(mason_path .. "packages/debugpy/venv/bin/python")
+-- end)
+
+-- -- setup testing
+-- require("neotest").setup({
+--   adapters = {
+--     require("neotest-python")({
+--       -- Extra arguments for nvim-dap configuration
+--       -- See https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for values
+--       dap = {
+--         justMyCode = false,
+--         console = "integratedTerminal",
+--       },
+--       args = { "--log-level", "DEBUG", "--quiet" },
+--       runner = "pytest",
+--     })
+--   }
+-- })
+
+-- lvim.builtin.which_key.mappings["dm"] = { "<cmd>lua require('neotest').run.run()<cr>",
+--   "Test Method" }
+-- lvim.builtin.which_key.mappings["dM"] = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>",
+--   "Test Method DAP" }
+-- lvim.builtin.which_key.mappings["df"] = {
+--   "<cmd>lua require('neotest').run.run({vim.fn.expand('%')})<cr>", "Test Class" }
+-- lvim.builtin.which_key.mappings["dF"] = {
+--   "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>", "Test Class DAP" }
+-- lvim.builtin.which_key.mappings["dS"] = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Test Summary" }
+
+
+-- -- binding for switching
+-- lvim.builtin.which_key.mappings["C"] = {
+--   name = "Python",
+--   c = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "Choose Env" },
+-- }
+
+
+
+--}}}
 
 --{{{ Folding
 vim.opt.foldenable = true
