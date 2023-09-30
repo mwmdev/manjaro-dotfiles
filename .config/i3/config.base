@@ -171,28 +171,28 @@ bindsym $mod+F11 workspace $ws11
 bindsym $mod+F12 workspace $ws12
 
 # Help widget
-bindsym $mod+ampersand exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e vim ~/help -c 'set nonumber' -c 'Goyo'"
+# bindsym $mod+ampersand in config.local
 
 # Move window to workspace 1
 bindsym $mod+Shift+ampersand move container to workspace $ws1;
 
 # Devdocs
-bindsym $mod+Ctrl+ampersand exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t surf https://devdocs.io"
+# bindsym $mod+Ctrl+ampersand in config.local
 
 # File browser
-bindsym $mod+eacute exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e vifm"
+# bindsym $mod+eacute in config.local
 
 # Move window to workspace 2
 bindsym $mod+Shift+eacute move container to workspace $ws2;
 
 # Local
-bindsym $mod+quotedbl exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t local-by-flywheel"
+# bindsym $mod+quotedbl in config.local
 
 # Move window to workspace 3
 bindsym $mod+Shift+quotedbl move container to workspace $ws3;
 
 # Prepros
-bindsym $mod+apostrophe exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t /opt/prepros/prepros"
+# bindsym $mod+apostrophe in config.local
 
 # Move window to workspace 4
 bindsym $mod+Shift+apostrophe move container to workspace $ws4;
@@ -329,7 +329,7 @@ bindsym $mod+dollar move scratchpad
 bindsym $mod+Shift+dollar scratchpad show
 
 # Cointop
-bindsym $mod+Ctrl+dollar exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e cointop"
+# bindsym $mod+Ctrl+dollar in config.local
 
 # Terminal
 bindsym $mod+Return exec $term
@@ -393,18 +393,18 @@ bindsym $mod+q exec --no-startup-id blurlock
 bindsym $mod+Shift+q mode "$mode_system"
 
 # Music player 
-bindsym $mod+s exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e ncspot"
+# bindsym $mod+s in config.local
 
 # FIX Download YouTube audio
 # bindsym $mod+Shift+s exec $alterm -name youtube-dl -e youtube-dl --add-metadata --audio-format mp3 -xic -o "~/Downloads/audio/%(title)s.%(ext)s" "$(xclip -selection p -o)"
 
 # Open Lofi Cafe
-bindsym $mod+Ctrl+s exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t chromium -kiosk https://lofi.cafe"
+# bindsym $mod+Ctrl+s in config.local
 
 # Projects
 bindsym $mod+d exec bash ~/Localserver/p.sh
 # bindsym $mod+Shift+d exec bash ~/Applications/repos/mwm-tools/i3-resurrect-dmenu.sh
-bindsym $mod+Shift+d exec --no-startup-id "i3-scratchpad -acc -d1000x1200 -p1300,650 -mt -t obsidian"
+# bindsym $mod+Shift+d in config.local
 
 # File browser
 bindsym $mod+f exec $term -e vifm
@@ -416,7 +416,7 @@ bindsym $mod+Shift+f fullscreen toggle
 bindsym $mod+Ctrl+f exec thunar
 
 # AI Assistant
-bindsym $mod+g exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e ~/Applications/repos/neuma/start.sh"
+# bindsym $mod+g in config.local
 # bindsym $mod+Shift+g 
 
 # i3 Focus left
@@ -529,7 +529,7 @@ bindsym $mod+Shift+Right move right
 #{{{ Fourth row
 
 # Dropdown terminal
-bindsym $mod+less exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty"
+# bindsym $mod+less in config.local
 
 # FIX
 #bindsym $mod+Shift+less
@@ -541,7 +541,7 @@ bindsym $mod+w exec feh --randomize --bg-scale ~/Pictures/Wallpapers/*
 bindsym $mod+Shift+w mode "Resize"
 
 # Calculator
-bindsym $mod+x exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t gnome-calculator"
+# bindsym $mod+x in config.local
 
 # TODO
 #bindsym $mod+Shift+x exec
@@ -582,7 +582,7 @@ bindsym $mod+n exec $term -e newsboat
 bindsym $mod+semicolon exec --no-startup-id morc_menu
 
 # System menu
-bindsym $mod+Shift+semicolon exec --no-startup-id "i3-scratchpad -acc -d800x600 -p1300,650 -mt -t alacritty -e bmenu"
+# bindsym $mod+Shift+semicolon in config.local
 
 # Global menu
 bindsym $mod+colon exec --no-startup-id dmenu_recency
