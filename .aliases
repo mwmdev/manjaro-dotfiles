@@ -46,14 +46,21 @@ alias 2..='cd ../..'
 alias 3..='cd ../../..'
 alias 4..='cd ../../../..'
 alias usb='cd /var/run/user/1000/gvfs'
-alias a='cd ~/Applications'
 alias l='cd ~/Localserver'
-alias c='cd ~/Documents/work/clients'
-alias d='cd ~/Downloads'
+
 # When in Localserver/project, jump to project plugins or theme folder
 alias t='cd $(find . -type d -name "public" | head -n 1) && cd wp-content/themes'
 alias p='cd $(find . -type d -name "public" | head -n 1) && cd wp-content/plugins'
+
+# When in Localserver/project, jump to project plugins or theme folder
+alias t='cd $(find . -type d -name "public" | head -n 1) && cd wp-content/themes'
+alias p='cd $(find . -type d -name "public" | head -n 1) && cd wp-content/plugins'
+
+# cloud
+alias c='cd ~/cloud'
+alias d='cd ~/cloud/dev/'
 alias vup='cd ~/cloud/dev/www/ && vagrant up'
+alias vupp='cd ~/cloud/dev/www/ && vagrant up --provision'
 
 alias nd='cd ~/cloud/apps/mwm/neuma/'
 #}}}
@@ -73,7 +80,7 @@ alias python='python3'
 alias env='source env/bin/activate'
 
 # LM chat
-alias n='. ~/Applications/repos/neuma/start.sh'
+alias n='. ~/cloud/apps/mwm/neuma/start.sh'
 
 # Webcam
 alias mcam='mpv /dev/video0'
