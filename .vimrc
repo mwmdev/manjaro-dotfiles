@@ -145,17 +145,6 @@ Plugin 'rbong/vim-flog'
 " https://github.com/airblade/vim-gitgutter
 Plugin 'airblade/vim-gitgutter'
 
-" Wiki
-" https://github.com/vimwiki/vimwiki
-Plugin 'vimwiki/vimwiki'
-let g:vimwiki_global_ext = 0
-let g:vimwiki_folding='expr'
-let g:vimwiki_key_mappings = { 'table_mappings': 0, }
-let g:vimwiki_list = [{
-    \ 'path': '~/vimwiki/',
-    \ 'syntax': 'markdown',
-    \ 'ext': '.md'}]
-
 " Better indent for PHP with HTML
 " https://github.com/captbaritone/better-indent-support-for-php-with-html
 Plugin 'captbaritone/better-indent-support-for-php-with-html'

@@ -57,8 +57,9 @@ alias t='cd $(find . -type d -name "public" | head -n 1) && cd wp-content/themes
 alias p='cd $(find . -type d -name "public" | head -n 1) && cd wp-content/plugins'
 
 # cloud
+alias m='cd ~/cloud/apps/mwm/'
 alias c='cd ~/cloud'
-alias d='cd ~/cloud/dev/'
+alias d='cd ~/cloud/dev/www/'
 alias vup='cd ~/cloud/dev/www/ && vagrant up'
 alias vupp='cd ~/cloud/dev/www/ && vagrant up --provision'
 
@@ -71,7 +72,7 @@ alias nd='cd ~/cloud/apps/mwm/neuma/'
 alias f='vifm'
 
 # Text editor
-alias v='lvim'
+alias v='nvim'
 
 # Python
 alias python='python3'
@@ -123,8 +124,7 @@ alias gdp='git dotfiles push'
 # Wordpress
 alias wpgi='wget -O .gitignore "https://gitlab.com/snippets/1699715/raw"'
 alias wpev='wp eval-file eval.php'
-# alias wpup='bash ./update.sh'
-# alias wpdp='bash ./deploy.sh'
+alias wplg='lnav /home/mike/cloud/dev/log/php/php8.2_errors.log'
 
 # Browserstack local testing
 alias mbst='sudo ~/Apps/BrowserStackLocal --key vFgsz1AenexVBvdHBzpM'
@@ -155,6 +155,9 @@ alias mtrx='cmatrix'
 alias msup='grsync -e sync-up'
 alias msdn='grsync -e sync-down'
 
+# Fooocus
+alias mfoc='cd ~/cloud/apps/mwm/Fooocus/ && source fooocus_env/bin/activate && python entry_with_update.py'
+
 #}}}
 
 #{{{ Config files shortcuts
@@ -169,7 +172,7 @@ alias mxrs='$EDITOR ~/.Xresources'
 alias msrc='sudo $EDITOR /etc/apt/sources.list'
 alias mvrc='$EDITOR ~/.vimrc'
 alias mlvc='$EDITOR ~/.config/lvim/config.lua'
-alias mi3c='$EDITOR ~/.config/i3/config'
+alias mi3c='$EDITOR ~/.config/i3/config.base'
 alias mplb='$EDITOR ~/.config/polybar/config'
 alias mgtk='$EDITOR ~/.config/gtk-3.0/settings.ini'
 alias mvfr='$EDITOR ~/.config/vifm/vifmrc'

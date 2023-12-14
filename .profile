@@ -12,4 +12,10 @@ export SCREENRC="~/.config/screen/.screenrc"
 # To make sure ssh interprets keys correctly
 export TERM=ansi
 
+# Flask
+export SECRET_KEY="431223acbc1ec58f99d2f2ef1634c945"
+
+#  Nvidia
+export LIBVA_DRIVER_NAME=nvidia
+
 PATH="$HOME/.cargo/bin:$PATH"

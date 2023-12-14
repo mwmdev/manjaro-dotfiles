@@ -26,7 +26,8 @@ default_floating_border normal
 hide_edge_borders none
 
 # Font for window titles and bar
-font xft:JetBrainsMono Nerd Front Mono 10
+# font xft:JetBrainsMono Nerd Front Mono Regular 10
+font xft: monospace 10
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -547,7 +548,7 @@ bindsym $mod+Shift+w mode "Resize"
 #bindsym $mod+Shift+x exec
 
 # Code editor
-bindsym $mod+c exec $term -e lvim
+bindsym $mod+c exec ~/Applications/Appimage/cursor-0.18.8-build-2312098ffjr3ign.AppImage
 bindsym $mod+Ctrl+c exec $term -e nvim
 
 # Split horizontally

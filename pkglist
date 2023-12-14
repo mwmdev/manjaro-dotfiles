@@ -40,6 +40,7 @@ cpu-x
 cpupower
 cronie
 cryptsetup
+ctags
 dart-sass
 debtap
 deluge
@@ -58,8 +59,6 @@ e2fsprogs
 ecryptfs-utils
 efibootmgr
 epdfview
-epson-inkjet-printer-escpr
-epson-inkjet-printer-escpr2
 exfatprogs
 f2fs-tools
 feh
@@ -67,6 +66,7 @@ ffmpeg
 ffmpegthumbnailer
 file
 filesystem
+filezilla
 findutils
 firefox
 firefox-developer-edition
@@ -135,7 +135,6 @@ jupyterlab
 keychain
 krita
 kvantum-manjaro
-lando-bin
 lazygit
 less
 lib32-flex
@@ -150,7 +149,7 @@ libgpod
 libreoffice-still
 libtool
 libva-mesa-driver
-libva-vdpau-driver
+libva-utils
 licenses
 lightdm-settings
 lightdm-slick-greeter
@@ -238,7 +237,6 @@ pkgconf
 polkit-gnome
 poppler-data
 powertop
-prepros-bin
 procps-ng
 protonvpn
 psmisc
@@ -246,7 +244,10 @@ pyenv
 pytest-pacman-git
 python-alt-pytest-asyncio
 python-black
+python-ebooklib
 python-geoip2
+python-html2text
+python-lsp-server
 python-openai
 python-pip
 python-pynvim
@@ -346,6 +347,7 @@ xautolock
 xcursor-chameleon-pearl
 xcursor-maia
 xcursor-simp1e-gruvbox-dark
+xdg-desktop-portal-gtk
 xdg-user-dirs
 xdg-utils
 xdotool
