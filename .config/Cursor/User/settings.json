@@ -1,0 +1,153 @@
+{
+  "editor.formatOnSave": true,
+  "editor.suggest.insertMode": "replace",
+  "editor.linkedEditing": true,
+  "editor.mouseWheelZoom": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "launch": {},
+  "[json]": {},
+  "workbench.statusBar.visible": true,
+  "breadcrumbs.enabled": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "update.showReleaseNotes": false,
+  "zenMode.hideLineNumbers": false,
+  "terminal.integrated.fontSize": 13,
+  "vim.leader": "<Space>",
+  "vim.hlsearch": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    /* Switch buffers */
+    {
+      "before": ["<S-h>"],
+      "commands": [":bprevious"]
+    },
+    {
+      "before": ["<S-l>"],
+      "commands": [":bnext"]
+    },
+    /* Toggle Zen mode */
+    {
+      "before": ["leader", "z"],
+      "commands": ["workbench.action.toggleZenMode"]
+    },
+    /* Project manager -> list projects */
+    {
+      "before": ["leader", "p"],
+      "commands": ["projectManager.listProjects"]
+    },
+    /* Toogle bookmark on line */
+    {
+      "before": ["leader", "b", "t"],
+      "commands": ["bookmarksNG.toogleBookmarks"]
+    },
+    /* Jump to previous bookmark  */
+    {
+      "before": ["leader", "b", "p"],
+      "commands": ["bookmarksNG.navigateToPrevBookmark"]
+    },
+    /* Jump to next bookmark  */
+    {
+      "before": ["leader", "b", "n"],
+      "commands": ["bookmarksNG.navigateToNextBookmark"]
+    },
+    /* Clear all bookmarks  */
+    {
+      "before": ["leader", "b", "c"],
+      "commands": ["bookmarksNG.clearAllBookmarks"]
+    },
+    /* Search the Wordpress Codex */
+    {
+      "before": ["leader", "w", "c"],
+      "commands": ["extension.searchCodex"]
+    },
+    /* Write to file */
+    {
+      "before": ["leader", "w"],
+      "commands": [":w"]
+    },
+    /* Quit without saving */
+    {
+      "before": ["leader", "q"],
+      "commands": [":q"]
+    },
+    /* Quickfix actions */
+    {
+      "before": ["<leader>", "c", "a"],
+      "commands": ["editor.action.quickFix"]
+    },
+    /* Browse files */
+    {
+      "before": ["leader", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    // Stay in visual mode while indenting
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    },
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    // Move selected lines while staying in visual mode
+    {
+      "before": ["J"],
+      "commands": ["editor.action.moveLinesDownAction"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["editor.action.moveLinesUpAction"]
+    },
+    // toggle comment selection
+    {
+      "before": ["leader", "c"],
+      "commands": ["editor.action.commentLine"]
+    }
+  ],
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorTheme": "Gruvbox Material Dark",
+  "workbench.activityBar.location": "hidden",
+  "editor.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace",
+  "github.copilot.enable": {
+    "php": "true"
+  },
+  "projectManager.git.baseFolders": ["/home/mike/cloud/dev/www/"],
+  "liveSassCompile.settings.generateMap": true,
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": null
+    }
+  ],
+  "liveSassCompile.settings.excludeList": ["**/node_modules/**", ".vscode/**"],
+  "maptz.regionfolder": {
+    "[php]": {
+      "defaultFoldStartRegex": "#region\\(collapsed\\)[\\s]*(.*)",
+      "foldEnd": "#endregion",
+      "foldEndRegex": "#endregion",
+      "foldStart": "#region [NAME]",
+      "foldStartRegex": "#region[\\s]*(.*)"
+    }
+  },
+  "vim.foldfix": true,
+  "gruvboxMaterial.darkSelection": "green",
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+  "explorer.confirmDelete": false,
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "notebook.lineNumbers": "on",
+  "git.confirmSync": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
+}

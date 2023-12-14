@@ -1,0 +1,105 @@
+// Place your key bindings in this file to override the defaults
+[
+  // NAVIGATION
+
+  /* Toggle sidebar */
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+
+  /* Toggle auxiliary sidebar */
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.toggleAuxiliaryBar"
+  },
+
+  /* Toggle panel */
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.togglePanel"
+  },
+  /* Create new terminal */
+  {
+    "key": "ctrl+shift+n",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus"
+  },
+  /* Focus previous terminal */
+  {
+    "key": "ctrl+shift+a",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  },
+  /* Focus next terminal */
+  {
+    "key": "ctrl+shift+z",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  /* Close terminal */
+  {
+    "key": "ctrl+shift+q",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+
+  // FILE TREE
+  {
+    "command": "workbench.action.toggleSidebarVisibility",
+    "key": "ctrl+e"
+  },
+  {
+    "command": "workbench.files.action.focusFilesExplorer",
+    "key": "ctrl+e",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "n",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "command": "renameFile",
+    "key": "r",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "command": "deleteFile",
+    "key": "d",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+[IntlBackslash]",
+    "command": "-editor.action.inPlaceReplace.up",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+[IntlBackslash]",
+    "command": "workbench.action.openQuickChat.copilot"
+  },
+  {
+    "key": "ctrl+shift+[IntlBackslash]",
+    "command": "-breadcrumbs.toggleToOn",
+    "when": "!config.breadcrumbs.enabled"
+  },
+  {
+    "key": "ctrl+shift+[IntlBackslash]",
+    "command": "-editor.action.inPlaceReplace.down",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+[IntlBackslash]",
+    "command": "-editor.action.accessibleViewGoToSymbol",
+    "when": "accessibilityHelpIsShown && accessibleViewGoToSymbolSupported || accessibleViewGoToSymbolSupported && accessibleViewIsShown"
+  },
+  {
+    "key": "ctrl+shift+[IntlBackslash]",
+    "command": "-breadcrumbs.focusAndSelect",
+    "when": "breadcrumbsPossible && breadcrumbsVisible"
+  },
+  {
+    "key": "ctrl+shift+[IntlBackslash]",
+    "command": "workbench.panel.chat.view.copilot.focus"
+  }
+]
