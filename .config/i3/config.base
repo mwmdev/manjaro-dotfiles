@@ -403,7 +403,7 @@ bindsym $mod+Shift+q mode "$mode_system"
 # bindsym $mod+Ctrl+s in config.local
 
 # Projects
-bindsym $mod+d exec bash ~/Localserver/p.sh
+# bindsym $mod+d exec bash ~/Localserver/p.sh
 # bindsym $mod+Shift+d exec bash ~/Applications/repos/mwm-tools/i3-resurrect-dmenu.sh
 # bindsym $mod+Shift+d in config.local
 
