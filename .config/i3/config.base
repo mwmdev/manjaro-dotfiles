@@ -548,7 +548,7 @@ bindsym $mod+Shift+w mode "Resize"
 #bindsym $mod+Shift+x exec
 
 # Code editor
-bindsym $mod+c exec ~/Applications/Appimage/cursor-0.18.8-build-2312098ffjr3ign.AppImage
+bindsym $mod+c exec ~/Applications/Appimage/cursor-0.20.1-build-231218ywfaxax09_442ade57ceb919f1eff18b048a6b77ac.AppImage.AppImage
 bindsym $mod+Ctrl+c exec $term -e nvim
 
 # Split horizontally
