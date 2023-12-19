@@ -46,24 +46,16 @@ alias 2..='cd ../..'
 alias 3..='cd ../../..'
 alias 4..='cd ../../../..'
 alias usb='cd /var/run/user/1000/gvfs'
-alias l='cd ~/Localserver'
 
-# When in Localserver/project, jump to project plugins or theme folder
-alias t='cd $(find . -type d -name "public" | head -n 1) && cd wp-content/themes'
-alias p='cd $(find . -type d -name "public" | head -n 1) && cd wp-content/plugins'
-
-# When in Localserver/project, jump to project plugins or theme folder
-alias t='cd $(find . -type d -name "public" | head -n 1) && cd wp-content/themes'
-alias p='cd $(find . -type d -name "public" | head -n 1) && cd wp-content/plugins'
-
-# cloud
+# Cloud shortcuts
 alias m='cd ~/cloud/apps/mwm/'
 alias c='cd ~/cloud'
 alias d='cd ~/cloud/dev/www/'
+
+# VVV shortcuts
 alias vup='cd ~/cloud/dev/www/ && vagrant up'
 alias vupp='cd ~/cloud/dev/www/ && vagrant up --provision'
 
-alias nd='cd ~/cloud/apps/mwm/neuma/'
 #}}}
 
 #{{{ Applications shortcuts
@@ -75,6 +67,7 @@ alias f='vifm'
 alias v='nvim'
 
 # Python
+alias py='python3'
 alias python='python3'
 
 # Python virtualenv
@@ -85,10 +78,6 @@ alias n='. ~/cloud/apps/mwm/neuma/start.sh'
 
 # Webcam
 alias mcam='mpv /dev/video0'
-
-# Python
-alias py='python3'
-alias python='python3'
 
 # gitLab cli
 alias gl='glab'
@@ -108,7 +97,7 @@ alias gs='git status'
 alias gsm='git status -uno'
 alias gd='git diff'
 alias gdn='git diff --name-only'
-alias gpm='git push origin master'
+alias gpm='git push origin main'
 alias gpb='git push origin bugfix'
 alias gpd='git push origin dev'
 alias gf='git fetch --all'
@@ -128,9 +117,6 @@ alias wplg='lnav /home/mike/cloud/dev/log/php/php8.2_errors.log'
 
 # Browserstack local testing
 alias mbst='sudo ~/Apps/BrowserStackLocal --key vFgsz1AenexVBvdHBzpM'
-
-# Tmuxinator
-# alias mux='tmuxinator'
 
 # Youtube search
 alias myts='ytfzf -T mpv -t'
