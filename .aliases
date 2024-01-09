@@ -64,7 +64,7 @@ alias vupp='cd ~/cloud/dev/www/ && vagrant up --provision'
 alias f='vifm'
 
 # Text editor
-alias v='nvim'
+alias v='vim'
 
 # Python
 alias py='python3'
