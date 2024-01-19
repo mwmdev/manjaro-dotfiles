@@ -75,3 +75,20 @@ macro m set browser "mpv --geometry=320x180-15-40 %u" ; open-in-browser ; set br
 # Open video in mpsyt
 macro y set browser "mpsyt url %u" ; open-in-browser ; set browser "firefox %u"
 #}}}
+
+#{{{ Color scheme (gruvbox dark) 
+color article                              color223 color236
+color background                           color100 color236
+color info                                 color142 color235
+color listfocus                            color214 color239
+color listfocus_unread                     color214 color96
+color listnormal                           color246 color237
+color listnormal_unread                    color175 color237
+highlight article "^Feed:.*"               color175 color237
+highlight article "^Title:.*"              color214 color237 bold
+highlight article "^Author:.*"             color167 color237
+highlight article "^Link:.*"               color109 color237
+highlight article "^Date:.*"               color142 color237
+highlight article "\\[[0-9]\\+\\]"         color208 color237 bold
+highlight article "\\[[^0-9].*[0-9]\\+\\]" color167 color237 bold
+#}}}
