@@ -36,7 +36,6 @@ cmatrix
 cointop-bin
 cool-retro-term
 coreutils
-cpu-x
 cpupower
 cronie
 cryptsetup
@@ -55,8 +54,10 @@ dmraid
 dnsmasq
 dosfstools
 downgrade
+dupeguru
 e2fsprogs
 ecryptfs-utils
+edid-decode-git
 efibootmgr
 epdfview
 exfatprogs
@@ -150,6 +151,7 @@ libreoffice-still
 libtool
 libva-mesa-driver
 libva-utils
+libxnvctrl
 licenses
 lightdm-settings
 lightdm-slick-greeter
@@ -157,8 +159,10 @@ lightdm-webkit2-theme-obsidian
 linux61
 linux61-nvidia
 linux61-virtualbox-host-modules
+linux66
+linux66-nvidia
+linux66-virtualbox-host-modules
 lnav
-local-by-flywheel-bin
 logrotate
 lsd
 lvm2
@@ -198,6 +202,7 @@ modemmanager
 morc_menu
 mousepad
 mpv
+msmtp
 ncdu
 ncspot
 neofetch
@@ -211,6 +216,7 @@ networkmanager-pptp
 networkmanager-vpnc
 newsboat
 nfs-utils
+nmap
 nomachine
 nss-mdns
 ntfs-3g
@@ -231,6 +237,7 @@ patchutils
 pavucontrol
 pciutils
 pcmanfm
+pdftk
 perl
 perl-file-mimeinfo
 pkgconf
@@ -239,6 +246,8 @@ poppler-data
 powertop
 procps-ng
 protonvpn
+protonvpn-cli
+protonvpn-gui
 psmisc
 pyenv
 pytest-pacman-git
@@ -272,12 +281,12 @@ sbxkb
 screen
 screenfetch
 sed
+sendmail
 shadow
 simplescreenrecorder
 sioyek
 skypeforlinux-stable-bin
 slurp
-smartgit
 snapd
 sof-firmware
 sox
@@ -375,6 +384,7 @@ xterm
 xz
 yay
 youtube-dl
+yt-dlp
 ytfzf
 zensu
 zoom
