@@ -1,0 +1,79 @@
+
+if has('ide')
+
+    " Leader key
+    let mapleader = "\<Space>"
+
+    " Set column
+    set colorcolumn=80
+
+    " Set line numbers
+    set number
+
+    set showcmd " Show the number of selected lines, characters etc.
+    set hlsearch
+    set incsearch
+
+    set autoindent
+    set copyindent
+    set smartindent
+
+    " NERDTree movement in explorer
+    set NERDTree
+    let g:NERDTreeMapActivateNode='l'
+    let g:NERDTreeMapJumpParent='h'
+
+    " Commentary
+    set commentary
+
+    " Vim actions
+
+    " Write
+    map <leader>w :w<cr>
+
+    " Write and quit
+    map <leader>x :x<cr>
+
+    " Toggle bookmark
+    map <leader>m <Action>(ToggleBookmark)
+
+    " Goto action
+    map <leader>a <Action>(GotoAction)
+
+    " Goto file
+    map <leader>f <Action>(GotoFile)
+
+    " Find in files
+    map <leader>F <Action>(FindInPath)
+
+    " Switcher
+    map <leader>s <Action>(Switcher)
+
+    " Hide all windows
+    map <leader>h <Action>(HideAllWindows)
+
+    " Goto terminal
+    map <leader>t <Action>(ActivateTerminalToolWindow)
+
+    " Goto terminal in current file folder
+    map <leader>T <Action>(Terminal.OpenInTerminal)
+
+    " Distraction free mode
+    map <leader>z <Action>(ToggleDistractionFreeMode)
+
+    " Goto project explorer
+    map <leader>p <Action>(ActivateProjectToolWindow)
+
+    " Presentation mode
+    map <leader>P <Action>(TogglePresentationMode)
+
+    " Goto next error
+    map <leader>e <Action>(GotoNextError)
+
+    " New codeGPT chat
+    map <leader>< <Action>(codegpt.NewChat)
+
+    " Goto git changes
+    map <leader>g <Action>(CheckinProject)
+
+endif
