@@ -548,8 +548,9 @@ bindsym $mod+Shift+w mode "Resize"
 #bindsym $mod+Shift+x exec
 
 # Code editor
-bindsym $mod+c exec ~/Applications/Appimage/cursor-0.20.1-build-231218ywfaxax09_442ade57ceb919f1eff18b048a6b77ac.AppImage.AppImage
-bindsym $mod+Ctrl+c exec $term -e nvim
+bindsym $mod+c exec phpstorm
+bindsym $mod+Shift+c exec pycharm-professional
+bindsym $mod+Ctrl+c exec $term -e lvim
 
 # Split horizontally
 bindsym $mod+Shift+c split h;exec notify-send 'Split horizontally'
@@ -687,6 +688,8 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec --no-startup-id blueman-applet
+exec --no-startup-id ~/.screenlayout/max.sh
+exec --no-startup-id redshift -l $(curl -s "https://location.services.mozilla.com/v1/geolocate?key=geoclue" | jq -r '"\(.location.lat):\(.location.lng)"')
 # exec --no-startup-id protonvpn-tray
 exec --no-startup-id xautolock -time 120 -locker blurlock
 exec_always --no-startup-id unclutter
