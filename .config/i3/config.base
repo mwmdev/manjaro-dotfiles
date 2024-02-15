@@ -549,7 +549,6 @@ bindsym $mod+Shift+w mode "Resize"
 
 # Code editor
 bindsym $mod+c exec phpstorm
-bindsym $mod+Shift+c exec pycharm-professional
 bindsym $mod+Ctrl+c exec $term -e lvim
 
 # Split horizontally
