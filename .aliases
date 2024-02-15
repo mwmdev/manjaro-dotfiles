@@ -54,7 +54,10 @@ alias d='cd ~/cloud/dev/www/'
 
 # VVV shortcuts
 alias vup='cd ~/cloud/dev/www/ && vagrant up'
+alias vof='cd ~/cloud/dev/www/ && vagrant halt'
+alias vre='cd ~/cloud/dev/www/ && vagrant reload'
 alias vupp='cd ~/cloud/dev/www/ && vagrant up --provision'
+alias vdb='cd ~/cloud/dev/ && vagrant ssh -c "switch_php_debugmod xdebug"'
 
 #}}}
 
@@ -86,6 +89,7 @@ alias gl='glab'
 alias vpn='protonvpn-cli c'
 alias vpnc='protonvpn-cli c "CH-ES#1"'
 alias vpnd='protonvpn-cli d'
+alias vpnr='vpnd && vpnc'
 alias vpns='protonvpn-cli s'
 alias vpnf='protonvpn-cli c --fastest --protocol udp'
 alias vpnr='protonvpn-cli c --random --protocol udp'
